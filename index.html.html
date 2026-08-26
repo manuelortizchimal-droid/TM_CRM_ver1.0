@@ -1,0 +1,1634 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Client Dashboard - Travel Mexico</title><style>
+:root{--nav:#092d31;--brand:#0a6768;--gold:#f2ad21;--bg:#f4f7fa;--card:#fff;--text:#10233f;--muted:#6b7b91;--line:#dce4ec;--ok:#13795b;--warn:#a56b00;--danger:#b23b3b}*{box-sizing:border-box}body{margin:0;background:var(--bg);font:14px Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--text)}button,input,select,textarea{font:inherit}.app{display:grid;grid-template-columns:230px 1fr;min-height:100vh}.side{background:var(--nav);color:#fff;padding:20px 14px}.brand{display:flex;gap:10px;align-items:center;margin:0 8px 22px}.logo{width:42px;height:42px;border-radius:12px;background:var(--gold);color:#07383b;display:grid;place-items:center;font-weight:900}.brand b{font-size:16px}.nav button{width:100%;border:0;background:transparent;color:#dce9ea;text-align:left;padding:11px 12px;border-radius:9px;margin:2px 0;cursor:pointer}.nav button.active,.nav button:hover{background:#16474b;color:#fff}.main{min-width:0;padding:24px}.top{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:20px}.top h1{font-size:24px;margin:0}.muted{color:var(--muted)}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.btn{border:1px solid var(--line);background:#fff;color:var(--text);border-radius:9px;padding:9px 12px;font-weight:700;cursor:pointer}.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}.btn.danger{color:var(--danger)}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.card,.panel{background:var(--card);border:1px solid var(--line);border-radius:14px}.card{padding:15px}.card small{color:var(--muted);font-weight:700}.card strong{display:block;font-size:24px;margin-top:6px}.panel{padding:18px;margin-bottom:16px}.panel h2{margin:0 0 14px;font-size:17px}.filters{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:9px;margin-bottom:15px}.field label{display:block;font-size:11px;font-weight:800;color:#4b5e77;margin-bottom:5px}.field input,.field select,.field textarea{width:100%;border:1px solid #cad6e2;border-radius:8px;background:#fff;padding:9px;min-height:40px}.field textarea{min-height:80px}.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:12px}table{width:100%;border-collapse:collapse;min-width:950px;background:#fff}th,td{padding:11px;border-bottom:1px solid #edf1f5;text-align:left;font-size:12px}th{background:#f7f9fb;color:#53657c;position:sticky;top:0}.badge{display:inline-block;padding:4px 8px;border-radius:999px;background:#eaf4f3;color:#17605d;font-size:11px;font-weight:800}.choice{display:flex;gap:7px;flex-wrap:wrap}.choice button{border:1px solid #cad6e2;background:#fff;border-radius:8px;padding:8px 10px;cursor:pointer}.choice button.on{background:var(--brand);border-color:var(--brand);color:#fff}.hidden{display:none!important}.section{display:none}.section.active{display:block}.tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-bottom:15px}.tabs button{border:0;background:transparent;padding:10px 9px;cursor:pointer;font-weight:700;color:var(--muted)}.tabs button.active{color:var(--brand);border-bottom:2px solid var(--brand)}.formgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.wide{grid-column:1/-1}.modal{position:fixed;inset:0;background:#10233f66;display:grid;place-items:center;padding:20px;z-index:10}.modalbox{background:#fff;border-radius:16px;width:min(950px,100%);max-height:90vh;overflow:auto;padding:20px}.modalhead{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:15px}.modalhead h2{margin:0}.close{border:0;background:#eef2f5;border-radius:8px;width:38px;height:38px;cursor:pointer}.drop{border:2px dashed #b9c8d8;border-radius:12px;padding:18px;text-align:center;background:#fafcfe}.preview{background:#f4f8f8;border-radius:10px;padding:12px;margin-top:10px;white-space:pre-wrap}.funnel{display:grid;gap:8px}.frow{display:grid;grid-template-columns:120px 1fr 70px;gap:8px;align-items:center}.bar{height:12px;background:#e8eef3;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:var(--brand)}.reporthead{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:10px}.notice{padding:12px;border-radius:10px;background:#edf6f5;color:#285d5b}.audit li{margin:6px 0}.empty{padding:25px;text-align:center;color:var(--muted)}@media(max-width:1050px){.app{grid-template-columns:1fr}.side{position:static}.nav{display:flex;overflow:auto}.nav button{min-width:max-content}.grid{grid-template-columns:repeat(2,1fr)}.filters{grid-template-columns:repeat(2,1fr)}.formgrid{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.main{padding:14px}.grid,.filters,.formgrid,.reporthead{grid-template-columns:1fr}.wide{grid-column:auto}}@media print{.side,.top,.no-print{display:none!important}.app{display:block}.main{padding:0}.section{display:none!important}#reports.active{display:block!important}}
+
+.file-list{display:grid;gap:8px;margin-top:12px}.file-row{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:9px 11px;border:1px solid var(--line);border-radius:9px;background:#fff}.progress{height:8px;background:#e8eef3;border-radius:99px;overflow:hidden;margin-top:10px}.progress i{display:block;height:100%;width:0;background:var(--brand);transition:width .2s}.doc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.doc-card{border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff;min-width:0}.doc-card b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.points-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.points-summary .card.used strong{color:#9a6500}.points-summary .card.available strong{color:var(--ok)}.points-summary .card.negative strong{color:var(--danger)}.point-chart-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.thumb{width:100%;max-height:220px;object-fit:contain;border:1px solid var(--line);border-radius:10px;background:#fff}.mini{font-size:11px}.status-line{padding:9px 11px;border-radius:9px;background:#f3f7fa;color:#51647b;margin-top:9px}.status-line.ok{background:#eaf6f1;color:#176248}.status-line.warn{background:#fff7e6;color:#8a5b00}.mapping-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:6px 0}.pill{display:inline-block;padding:4px 8px;border-radius:999px;background:#eef3f6;color:#52667a;font-size:11px;font-weight:800}.doc-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.stack{display:grid;gap:10px}@media(max-width:850px){.doc-grid,.point-chart-grid,.points-summary{grid-template-columns:1fr}}
+.review-toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:12px 0}
+.review-table{width:100%;border-collapse:collapse;font-size:12px}.review-table th,.review-table td{padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:middle;text-align:left}.review-table th{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);background:#f7fafc}.review-table input,.review-table select{width:100%;min-width:110px;padding:8px;border:1px solid var(--line);border-radius:7px;background:#fff}.review-table input[type=checkbox]{width:auto;min-width:0}.confidence{display:inline-flex;align-items:center;gap:5px;font-weight:800}.confidence.high{color:#176248}.confidence.medium{color:#946200}.confidence.low{color:#a43d3d}.confidence-dot{width:8px;height:8px;border-radius:99px;background:currentColor}.review-summary{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0}.review-summary .pill{font-size:11px}.import-step{border-left:3px solid var(--brand);padding-left:12px;margin:14px 0}.import-step h3{margin:0 0 4px;font-size:14px}.point-review{margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}.point-proposal-row.invalid{background:#fff5f5}.review-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.subtle{background:#f7fafc;border:1px solid var(--line);border-radius:10px;padding:10px}.scope-tag{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.04em;color:#52667a}
+.res-import-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:12px 0}.res-import-summary .card strong{font-size:20px}.res-row-warning{background:#fff8e8}.res-row-error{background:#fff1f1}.res-map-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0}.res-map-card{border:1px solid var(--line);border-radius:9px;padding:8px;background:#fff}.res-map-card label{font-size:10px;text-transform:uppercase;color:var(--muted);font-weight:900;display:block;margin-bottom:5px}.res-map-card select{width:100%;padding:8px;border:1px solid var(--line);border-radius:7px}.res-review-table input,.res-review-table select{min-width:100px}.res-review-table .wide-input{min-width:165px}.res-state{display:inline-block;padding:4px 8px;border-radius:999px;font-size:10px;font-weight:900;letter-spacing:.04em}.res-state.ready{background:#e9f6ef;color:#176248}.res-state.review{background:#fff4db;color:#8a5b00}.res-state.error{background:#fdecec;color:#a43d3d}.res-state.duplicate{background:#eef1f5;color:#5d6d7d}@media(max-width:800px){.res-import-summary,.res-map-grid{grid-template-columns:1fr}.res-review-table{min-width:1000px}}
+
+.report-dashboard{display:grid;gap:16px}.report-hero{background:linear-gradient(135deg,#0b5260,#08716b);color:#fff;border-radius:16px;padding:20px}.report-hero .muted{color:rgba(255,255,255,.72)}.report-hero-grid{display:grid;grid-template-columns:2fr repeat(3,minmax(120px,1fr));gap:16px;align-items:start}.report-hero-stat small{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.68);margin-bottom:5px}.report-hero-stat strong{display:block;font-size:21px}.report-kpi-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.report-kpi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;min-width:0}.report-kpi small{display:block;color:var(--muted);font-weight:800;min-height:30px}.report-kpi strong{display:block;font-size:22px;margin-top:3px}.trend{display:flex;align-items:center;gap:4px;margin-top:5px;font-size:11px;font-weight:900}.trend.good{color:#187452}.trend.bad{color:#b43d3d}.trend.neutral{color:#657789}.chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.chart-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px;min-width:0}.chart-card h3{margin:0 0 3px;font-size:14px}.chart-card svg{display:block;width:100%;height:auto;max-height:270px}.chart-legend{display:flex;gap:12px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin-top:7px}.legend-key{display:flex;align-items:center;gap:5px}.legend-swatch{width:10px;height:3px;border-radius:4px;background:#0a7471}.legend-swatch.alt{background:#d19a24}.funnel-modern{display:grid;gap:9px}.funnel-modern-row{display:grid;grid-template-columns:110px 1fr 70px;gap:10px;align-items:center;font-size:12px}.funnel-modern-track{height:12px;background:#eaf0f3;border-radius:99px;overflow:hidden}.funnel-modern-fill{height:100%;background:#0a7471;border-radius:99px}.comparison-note{border-left:3px solid var(--brand);padding:10px 12px;background:#f7fafb;border-radius:0 10px 10px 0;font-size:12px}.report-section-title{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:10px}.report-section-title h2{margin:0}.booking-row{display:grid;grid-template-columns:1.3fr 1fr 1fr .8fr .8fr;gap:10px;align-items:center;padding:11px;border-bottom:1px solid var(--line);font-size:12px}.commercial-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.commercial-strip .card strong{font-size:20px}@media(max-width:1000px){.report-kpi-grid{grid-template-columns:repeat(3,1fr)}.report-hero-grid{grid-template-columns:1fr 1fr}.chart-grid{grid-template-columns:1fr}.commercial-strip{grid-template-columns:1fr 1fr}}@media(max-width:650px){.report-kpi-grid,.report-hero-grid,.commercial-strip{grid-template-columns:1fr}.funnel-modern-row{grid-template-columns:90px 1fr 55px}.booking-row{grid-template-columns:1fr}.report-kpi small{min-height:0}}@media print{.report-dashboard{gap:10px}.report-hero{-webkit-print-color-adjust:exact;print-color-adjust:exact}.report-kpi-grid{grid-template-columns:repeat(5,1fr)}.chart-grid{grid-template-columns:1fr 1fr}.report-kpi,.chart-card,.report-hero{break-inside:avoid}}
+
+/* ---------- TRAVEL MEXICO CRM — VERSION MASTER 1.0 ---------- */
+:root{
+  --nav:#0a4a4c;
+  --nav-dark:#07383b;
+  --brand:#0a696a;
+  --gold:#f2ad21;
+  --bg:#edf2f4;
+  --card:#fff;
+  --text:#10233f;
+  --muted:#657489;
+  --line:#cfd9e1;
+  --line-strong:#bac8d3;
+  --ok:#13795b;
+  --warn:#a56b00;
+  --danger:#b23b3b;
+}
+
+html,body{min-height:100%;margin:0}
+body{background:var(--bg)}
+.app{
+  display:grid;
+  grid-template-columns:184px minmax(0,1fr);
+  min-height:100vh;
+  align-items:start;
+}
+.side{
+  position:sticky;top:0;height:100vh;overflow:auto;
+  padding:9px 8px;background:#f8faf9;color:var(--text);
+  border-right:1px solid var(--line);
+}
+.tm-brand{
+  display:flex;align-items:center;gap:7px;
+  margin:0 0 7px;padding:5px 4px 7px;
+  border-bottom:1px solid #dde5e8;
+}
+.tm-logo-box{
+  width:32px;height:32px;flex:0 0 32px;
+  display:grid;place-items:center;overflow:hidden;
+  border-radius:8px;background:#fff9eb;border:1px solid #eadfbf;
+}
+.tm-logo-box img{width:28px;height:28px;object-fit:contain;display:block}
+.tm-brand-copy{min-width:0;line-height:1.05}
+.tm-brand-copy b{display:block;color:var(--nav-dark);font-size:11px;letter-spacing:.02em;white-space:nowrap}
+.tm-brand-copy span{display:block;margin-top:3px;color:#7a898d;font-size:8.5px;white-space:nowrap}
+
+.nav{display:grid;gap:2px}
+.nav button{
+  min-height:33px;margin:0;padding:7px 9px;border-radius:7px;
+  color:#29464a;background:transparent;font-size:12px;font-weight:650;
+}
+.nav button:hover{background:#e7efee;color:var(--nav-dark)}
+.nav button.active{background:var(--nav);color:#fff;box-shadow:inset 3px 0 0 var(--gold)}
+
+.main{min-width:0;width:100%;padding:9px 11px 16px}
+.top{
+  min-height:34px;margin-bottom:6px;align-items:center;
+  padding-bottom:5px;border-bottom:1px solid #d9e1e6;
+}
+.top h1{font-size:19px;margin:0;line-height:1.05}
+.top .muted{font-size:10.5px}
+.top .row{gap:5px}
+
+.section.active{display:block}
+#dashboard.section.active{display:grid;gap:6px}
+#dashboard .filters{margin-bottom:0}
+#dashboard .grid{margin:0}
+#dashboard .panel{margin-top:0!important;margin-bottom:0}
+
+.filters{
+  grid-template-columns:repeat(auto-fit,minmax(126px,1fr));
+  gap:5px;margin-bottom:7px;
+}
+.grid{
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:6px;
+}
+.card,.panel,.chart-card,.report-kpi,.doc-card,.res-map-card{
+  background:#fff;border:1px solid var(--line-strong);
+  box-shadow:0 1px 4px rgba(16,35,63,.05);
+}
+.card{padding:8px 9px;border-radius:8px}
+.card small{font-size:10px}
+.card strong{font-size:17px;margin-top:2px}
+.panel{padding:10px;margin-bottom:7px;border-radius:8px}
+.panel h2{margin:0 0 7px;font-size:14px}
+
+.field label{margin-bottom:3px;font-size:10px}
+.field input,.field select,.field textarea{
+  min-height:32px;padding:6px 7px;border-color:#c4d0da;border-radius:6px;
+}
+.field textarea{min-height:60px}
+.formgrid{grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:6px}
+
+.btn{padding:6px 8px;border-radius:6px;font-size:11.5px}
+.btn.primary{box-shadow:0 1px 2px rgba(10,105,106,.15)}
+.row{gap:6px}
+
+.tablewrap{
+  background:#fff;border:1px solid var(--line-strong);border-radius:7px;
+  box-shadow:0 1px 3px rgba(16,35,63,.035);
+}
+th,td{padding:6px 7px}
+th{background:#edf2f5}
+.empty{padding:10px}
+
+.drop{padding:10px}
+.doc-grid{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px}
+.points-summary{grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:6px}
+.res-import-summary{grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:6px}
+.res-map-grid{grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:5px}
+
+.report-dashboard{gap:7px}
+.report-hero{padding:11px}
+.report-hero-grid{gap:7px}
+.report-kpi-grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:5px}
+.chart-grid{gap:6px}
+.chart-card{padding:9px}
+.commercial-strip{gap:5px}
+
+@media(max-width:1050px){
+  .app{grid-template-columns:1fr}
+  .side{
+    position:static;height:auto;padding:6px 7px;border-right:0;
+    border-bottom:1px solid var(--line);
+  }
+  .tm-brand{width:max-content;max-width:100%;margin:0 0 4px;padding:2px 3px 4px;border-bottom:0}
+  .tm-logo-box{width:28px;height:28px;flex-basis:28px}
+  .tm-logo-box img{width:25px;height:25px}
+  .nav{display:flex;overflow:auto;gap:2px}
+  .nav button{min-width:max-content;min-height:30px}
+  .main{padding:8px}
+}
+@media(max-width:620px){
+  .main{padding:6px}
+  .top{margin-bottom:5px}
+  .grid,.filters,.formgrid,.reporthead{grid-template-columns:1fr}
+  .panel{padding:8px}
+}
+
+</style>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js"></script>
+</head><body><div class="app">
+<aside class="side">
+<div class="brand tm-brand">
+  <div class="tm-logo-box"><img src="data:image/jpeg;base64,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" alt="Travel Mexico"></div>
+  <div class="tm-brand-copy">
+    <b>TRAVEL MEXICO</b>
+    <span>Client Dashboard</span>
+  </div>
+</div>
+<nav class="nav" id="nav"></nav>
+</aside>
+<main class="main"><div class="top"><div><h1 id="pageTitle">Dashboard</h1><div class="muted">Client Dashboard - Travel Mexico</div></div><div class="row no-print"><button class="btn" id="exportBtn">Export CRM JSON</button><button class="btn primary" id="newClientTop">+ New Client</button></div></div>
+<section id="dashboard" class="section active"><div class="filters" id="masterFilters"></div><div class="grid" id="masterCards"></div><div class="panel" style="margin-top:16px"><h2>Recent Clients</h2><div id="recentClients"></div></div></section>
+<section id="clients" class="section"><div class="row" style="justify-content:space-between;margin-bottom:12px"><div class="row"><input id="clientSearch" placeholder="Search clients" style="padding:9px;border:1px solid var(--line);border-radius:8px"><select id="clientStatusFilter" style="padding:9px;border:1px solid var(--line);border-radius:8px"><option value="">All statuses</option><option>Active</option><option>Inactive</option><option>Paused</option></select></div><button class="btn primary" id="newClientBtn">+ New Client</button></div><div id="clientsTable"></div></section>
+<section id="leads" class="section"><div class="panel"><h2>Leads</h2><p class="muted">Lead totals are consolidated from stored campaign KPI periods. Detailed individual lead records can be added later without changing the data model.</p><div id="leadsView"></div></div></section>
+<section id="bookings" class="section"><div class="row" style="justify-content:flex-end;margin-bottom:10px"><button class="btn" id="importReservationsBtn">Import Reservations</button><button class="btn primary" id="newBookingBtn">+ Add Reservation</button></div><div id="bookingsTable"></div></section>
+<section id="campaigns" class="section"><div class="row" style="justify-content:flex-end;margin-bottom:10px"><button class="btn primary" id="newCampaignBtn">+ Add Campaign</button></div><div id="campaignsTable"></div></section>
+<section id="reports" class="section"><div class="panel no-print"><h2>Report Generator</h2><div class="filters"><div class="field"><label>Client</label><select id="reportClient"></select></div><div class="field"><label>From Date</label><input id="reportFrom" type="date"></div><div class="field"><label>To Date</label><input id="reportTo" type="date"></div><div class="field"><label>&nbsp;</label><button class="btn primary" id="generateReport">Generate Report</button></div><div class="field"><label>&nbsp;</label><button class="btn" id="exportReportPdf">Export PDF</button></div><div class="field"><label>&nbsp;</label><button class="btn" id="exportReportXlsx">Export XLSX</button></div></div></div><div id="clientReport"></div></section>
+<section id="points" class="section">
+<div class="panel"><div class="row" style="justify-content:space-between"><div><h2 style="margin-bottom:4px">Points Inventory</h2><div class="muted">Client points are reduced automatically by active reservations.</div></div><div class="row"><button class="btn" id="newPointRuleBtn">+ Point Rule</button><button class="btn primary" id="newPointChartBtn">+ Upload Point Chart</button></div></div><div id="pointsTable" style="margin-top:14px"></div></div>
+<div class="panel"><h2>Hotel Point Charts</h2><p class="muted">Upload the official hotel point-chart screenshot/PDF as reference. OCR text is stored with the chart. Point Rules are the structured values used for automatic reservation calculations.</p><div id="pointChartsView"></div></div>
+<div class="panel"><h2>Point Rules</h2><div id="pointRulesView"></div></div>
+<div class="panel">
+  <div class="row" style="justify-content:space-between;align-items:flex-start">
+    <div><h2 style="margin-bottom:4px">Room Type Capacity</h2><div class="muted">Maximum allowed guests by room category. This does not change points or reservation imports unless a Guests / Party Size value is provided.</div></div>
+    <button class="btn primary" id="saveRoomCapacities">Save Capacities</button>
+  </div>
+  <div id="roomCapacityView" style="margin-top:10px"></div>
+</div>
+</section>
+<section id="calendar" class="section"><div class="panel"><h2>Calendar</h2><div id="calendarView"></div></div></section>
+<section id="import" class="section">
+<div class="panel">
+  <div class="row" style="justify-content:space-between;align-items:flex-start">
+    <div><h2 style="margin-bottom:4px">Import Review Center</h2><div class="muted">Files → detection → review → confirmation → CRM. Nothing is written to the CRM until you confirm it.</div></div>
+  </div>
+
+  <div class="import-step"><h3>1. Import destination</h3><div class="muted">Select where detected client and campaign data should be applied.</div></div>
+  <div class="filters">
+    <div class="field"><label>Import Type</label><select id="importType"><option value="auto">Auto Detect</option><option value="profile">Client Profile</option><option value="kpi">Marketing KPIs</option><option value="reservations">Reservations</option></select></div>
+    <div class="field"><label>Reference Client</label><select id="importClient"><option value="">Auto assign by Member</option></select><div class="muted mini">For reservation files with multiple owners, leave this on Auto assign by Member.</div></div>
+    <div class="field"><label>Reference Campaign</label><select id="importCampaign"><option value="">No campaign</option></select></div>
+    <div class="field"><label>KPI Date From</label><input id="importDateFrom" type="date"></div>
+    <div class="field"><label>KPI Date To</label><input id="importDateTo" type="date"></div><div class="field"><label>Reservation Date Format</label><select id="importDateFormat"><option value="auto">Auto Detect</option><option value="mdy">MM/DD/YYYY</option><option value="dmy">DD/MM/YYYY</option></select></div>
+  </div>
+
+  <div class="import-step"><h3>2. Add source material</h3><div class="muted">Paste screenshots, drag files, upload spreadsheets/PDFs, or paste structured text.</div></div>
+  <div class="drop" id="dropZone" tabindex="0">
+    <b>Drop files, select multiple files, or paste screenshots with Ctrl+V / Cmd+V</b>
+    <p class="muted">Supported: XLSX, XLS, CSV, JSON, TXT, PDF, PNG, JPG and WEBP. For the smoothest one-file reservation import, use these headers exactly: Conf. Number, Room Type, Hotel, Check in, Check out, Member. “Días para check in” may stay in the file but is ignored and recalculated by the CRM. Missing owners in an XLS/XLSX/CSV are created as minimal client profiles automatically. Files containing reservations for multiple owners can be imported in one operation; each row is matched to an existing Client using the Member column. “Días para check in” is ignored as source data and recalculated by the CRM from the Check-in date. Spanish Excel dates such as “sábado, 19 de diciembre de 2026” are supported. You can also paste screenshots directly with Ctrl+V / Cmd+V.</p>
+    <input id="importFile" type="file" multiple accept=".csv,.json,.txt,.xlsx,.xls,.pdf,image/png,image/jpeg,image/webp">
+    <textarea id="pasteArea" placeholder="Paste structured text here..." style="width:100%;margin-top:10px;min-height:110px;border:1px solid var(--line);border-radius:8px;padding:10px"></textarea>
+    <div class="row" style="justify-content:center;margin-top:10px">
+      <button class="btn primary" id="analyzeImport">Analyze / OCR</button>
+      <button class="btn" id="saveReferenceDocs">Save Files as Reference</button>
+      <button class="btn" id="clearImport">Clear</button>
+    </div>
+    <div id="importFileList" class="file-list"></div>
+    <div class="progress"><i id="importProgress"></i></div>
+    <div id="importStatus" class="status-line">Ready.</div>
+  </div>
+
+  <div class="import-step"><h3>3. Review detected data</h3><div class="muted">Verify the destination field, detected value and confidence before importing.</div></div>
+  <div id="importReviewCenter"><div class="empty">Analyze files or pasted content to create an import review.</div></div>
+</div>
+
+<div class="panel"><h2>Stored Reference Documents</h2><div id="documentsView"></div></div>
+</section>
+<section id="settings" class="section"><div class="panel"><h2>Settings & System Health</h2><p class="muted">Version Master 1.6 fixes CRM startup initialization and preserves all reservation import, room-capacity, points, campaign, report, backup and dashboard functions.</p><ul class="audit"><li>The CRM uses normalized IDs for clients, campaigns, KPI periods, reservations, documents and point rules.</li><li>Import Review Center requires confirmation before OCR/spreadsheet data is saved.</li><li>Reservation imports support XLS/XLSX/CSV and PNG/JPG/WEBP/PDF OCR with row-level validation.</li><li>Reports use fully-contained KPI periods for selected date ranges; partially overlapping aggregate periods are not silently prorated.</li><li>Full Backup includes both CRM data and locally stored document/Point Chart files.</li><li>OCR, XLSX parsing and dedicated PDF export use external libraries and therefore require internet access when those libraries are not already cached.</li></ul><div class="row"><button class="btn" id="fullBackupBtn">Export Full Backup</button><label class="btn" style="cursor:pointer">Restore Full Backup<input id="restoreBackupInput" type="file" accept=".json,application/json" style="display:none"></label><button class="btn danger" id="clearData">Clear CRM Data + Files</button></div><div id="systemHealth" class="status-line" style="margin-top:12px"></div></div></section>
+</main></div><div id="modalRoot"></div>
+
+<script>
+(()=>{'use strict';
+
+/* =========================================================
+   TRAVEL MEXICO CRM — MASTER BASELINE
+   Internal version: Version Master 1.6
+   Purpose: single clean source for all future CRM changes.
+   ========================================================= */
+const APP_NAME='Client Dashboard - Travel Mexico';
+const APP_VERSION='Version Master 1.6';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const uid=p=>p+'_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,7); const today=()=>new Date().toISOString().slice(0,10); const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); const num=v=>Number.isFinite(Number(v))?Number(v):0; const n=v=>Math.max(0,num(v)); const fmt=v=>new Intl.NumberFormat('en-US',{maximumFractionDigits:1}).format(num(v)); const usd=v=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(num(v));
+const addYear=s=>{if(!s)return'';let[y,m,d]=s.split('-').map(Number),ny=y+1,last=new Date(Date.UTC(ny,m,0)).getUTCDate();return [ny,String(m).padStart(2,'0'),String(Math.min(d,last)).padStart(2,'0')].join('-')};
+/* ---------- STORAGE ---------- */
+const DBKEY='tm_crm_v2';
+const Storage={
+  blank(){return{clients:[],campaigns:[],campaign_metrics:[],reservations:[],leads:[],reports:[],documents:[],activity_logs:[],point_charts:[],point_rules:[],room_capacities:[]}},
+  normalize(v){let b=this.blank(),o=Object.assign(b,v||{});Object.keys(b).forEach(k=>{if(!Array.isArray(o[k]))o[k]=[]});return o},
+  load(){try{return this.normalize(JSON.parse(localStorage.getItem(DBKEY))||JSON.parse(localStorage.getItem('tm_crm_v1'))||{})}catch{return this.blank()}},
+  save(db){localStorage.setItem(DBKEY,JSON.stringify(this.normalize(db)))}
+};
+const FileStore={db:null,async open(){if(this.db)return this.db;this.db=await new Promise((resolve,reject)=>{let r=indexedDB.open('tm_crm_files',1);r.onupgradeneeded=()=>{if(!r.result.objectStoreNames.contains('files'))r.result.createObjectStore('files')};r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)});return this.db},async put(id,blob){let d=await this.open();return new Promise((res,rej)=>{let tx=d.transaction('files','readwrite');tx.objectStore('files').put(blob,id);tx.oncomplete=()=>res(true);tx.onerror=()=>rej(tx.error)})},async get(id){let d=await this.open();return new Promise((res,rej)=>{let r=d.transaction('files','readonly').objectStore('files').get(id);r.onsuccess=()=>res(r.result||null);r.onerror=()=>rej(r.error)})},async del(id){let d=await this.open();return new Promise((res,rej)=>{let tx=d.transaction('files','readwrite');tx.objectStore('files').delete(id);tx.oncomplete=()=>res(true);tx.onerror=()=>rej(tx.error)})},async clear(){let d=await this.open();return new Promise((res,rej)=>{let tx=d.transaction('files','readwrite');tx.objectStore('files').clear();tx.oncomplete=()=>res(true);tx.onerror=()=>rej(tx.error)})}};
+let db=Storage.load(); const save=()=>Storage.save(db); const log=(type,refId,text)=>{db.activity_logs.unshift({id:uid('log'),type,refId,text,date:new Date().toISOString()});db.activity_logs=db.activity_logs.slice(0,300);save()};
+const resorts=['Villa del Palmar Cabo','Villa del Arco','Villa del Palmar Loreto','Villa La Valencia','Villa La Estancia Los Cabos','Villa del Palmar Puerto Vallarta','Villa del Palmar Flamingos','Villa La Estancia Riviera Nayarit']; const levels=['Gold','Platinum','Digital MKT'];
+
+const ROOM_TYPES=['1BR','1BR ELITE','2BR','2BR ELITE','2BR OF','2BR PH ELITE','3BR','3BR OF','ST','ST Elite'];
+const ROOM_TYPE_ALIASES={
+  '1br':'1br','1 bedroom':'1br',
+  '1br elite':'1br elite','1 bedroom elite':'1br elite',
+  '2br':'2br','2 bedroom':'2br',
+  '2br elite':'2br elite','2 bedroom elite':'2br elite',
+  '2br of':'2br of','2 bedroom of':'2br of',
+  '2br ph elite':'2br ph elite','2 bedroom ph elite':'2br ph elite',
+  '2br penthouse elite':'2br ph elite','2 bedroom penthouse elite':'2br ph elite',
+  '3br':'3br','3 bedroom':'3br',
+  '3br of':'3br of','3 bedroom of':'3br of',
+  'st':'st','studio':'st',
+  'st elite':'st elite','studio elite':'st elite'
+};
+const ROOM_TYPE_LABELS={
+  '1br':'1BR','1br elite':'1BR ELITE','2br':'2BR','2br elite':'2BR ELITE',
+  '2br of':'2BR OF','2br ph elite':'2BR PH ELITE','3br':'3BR','3br of':'3BR OF',
+  'st':'ST','st elite':'ST Elite'
+};
+const VALID_ROOM_TYPE_KEYS=new Set(Object.keys(ROOM_TYPE_LABELS));
+
+const DEFAULT_ROOM_CAPACITY_RULES={
+  '1br':{max_occupancy:4,max_adults:4,family_rule:'2 adults + 2 kids',adult_rule:'4 adults'},
+  '1br elite':{max_occupancy:4,max_adults:4,family_rule:'2 adults + 2 kids',adult_rule:'4 adults'},
+  '2br':{max_occupancy:6,max_adults:6,family_rule:'4 adults + 2 kids',adult_rule:'6 adults'},
+  '2br elite':{max_occupancy:6,max_adults:6,family_rule:'4 adults + 2 kids',adult_rule:'6 adults'},
+  '2br of':{max_occupancy:6,max_adults:6,family_rule:'4 adults + 2 kids',adult_rule:'6 adults'},
+  '2br ph elite':{max_occupancy:6,max_adults:6,family_rule:'4 adults + 2 kids',adult_rule:'6 adults'},
+  '3br':{max_occupancy:8,max_adults:8,family_rule:'6 adults + 2 kids',adult_rule:'8 adults'},
+  '3br of':{max_occupancy:8,max_adults:8,family_rule:'6 adults + 2 kids',adult_rule:'8 adults'},
+  'st':{max_occupancy:4,max_adults:3,family_rule:'2 adults + 2 kids',adult_rule:'3 adults'},
+  'st elite':{max_occupancy:4,max_adults:3,family_rule:'2 adults + 2 kids',adult_rule:'3 adults'}
+};
+
+
+function roomCapacityRule(roomType){
+  let key=canonicalCategory(roomType);
+  let saved=(db.room_capacities||[]).find(x=>canonicalCategory(x.room_type)===key);
+  let defaults=DEFAULT_ROOM_CAPACITY_RULES[key]||null;
+  if(saved){
+    return{
+      room_type:displayRoomCategory(saved.room_type||roomType),
+      max_occupancy:n(saved.max_occupancy)||(defaults?.max_occupancy||0),
+      max_adults:n(saved.max_adults)||(defaults?.max_adults||0),
+      family_rule:saved.family_rule||defaults?.family_rule||'',
+      adult_rule:saved.adult_rule||defaults?.adult_rule||'',
+      configured:!!(n(saved.max_occupancy)||defaults)
+    };
+  }
+  if(defaults)return{room_type:displayRoomCategory(roomType),...defaults,configured:true};
+  return{room_type:displayRoomCategory(roomType),max_occupancy:0,max_adults:0,family_rule:'',adult_rule:'',configured:false};
+}
+function capacityForRoomType(roomType){return roomCapacityRule(roomType).max_occupancy}
+function ensureRoomCapacityRows(){
+  db.room_capacities=db.room_capacities||[];
+  let changed=false;
+  for(let roomType of ROOM_TYPES){
+    let key=canonicalCategory(roomType),defaults=DEFAULT_ROOM_CAPACITY_RULES[key]||null;
+    let row=db.room_capacities.find(x=>canonicalCategory(x.room_type)===key);
+    if(!row){
+      db.room_capacities.push({
+        id:uid('capacity'),room_type:roomType,
+        max_occupancy:defaults?.max_occupancy||0,
+        max_adults:defaults?.max_adults||0,
+        family_rule:defaults?.family_rule||'',
+        adult_rule:defaults?.adult_rule||'',
+        updated_at:new Date().toISOString()
+      });
+      changed=true;
+    }else if(defaults){
+      // Fill missing defaults, but never overwrite a deliberate saved value.
+      if(!n(row.max_occupancy)){row.max_occupancy=defaults.max_occupancy;changed=true}
+      if(!n(row.max_adults)){row.max_adults=defaults.max_adults;changed=true}
+      if(!row.family_rule){row.family_rule=defaults.family_rule;changed=true}
+      if(!row.adult_rule){row.adult_rule=defaults.adult_rule;changed=true}
+    }
+  }
+  return changed;
+}
+/* ---------- NAVIGATION ---------- */
+const routes=[['dashboard','Dashboard'],['clients','Clients'],['leads','Leads'],['bookings','Bookings'],['campaigns','Campaigns'],['reports','Reports'],['points','Points Inventory'],['calendar','Calendar'],['import','Import Data'],['settings','Settings']];
+$('#nav').innerHTML=routes.map(([id,l],i)=>`<button data-route="${id}" class="${i?'':'active'}">${l}</button>`).join(''); function route(id){$$('.section').forEach(x=>x.classList.toggle('active',x.id===id));$$('#nav button').forEach(x=>x.classList.toggle('active',x.dataset.route===id));$('#pageTitle').textContent=routes.find(x=>x[0]===id)?.[1]||id;renderAll()} $('#nav').addEventListener('click',e=>{let b=e.target.closest('[data-route]');if(b)route(b.dataset.route)});
+const getClient=id=>db.clients.find(x=>x.id===id); const getCampaign=id=>db.campaigns.find(x=>x.id===id);
+const activeReservation=r=>!['Cancelled'].includes(r.status);
+const pointsUsedForClient=id=>db.reservations.filter(r=>r.client_id===id&&activeReservation(r)).reduce((a,r)=>a+n(r.points_used),0);
+const pointsRemainingForClient=id=>{let c=getClient(id);return n(c?.points)-pointsUsedForClient(id)};
+const normText=s=>String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+function canonicalCategory(v){
+  let s=normText(v||'').replace(/\s+/g,' ').trim();
+  return ROOM_TYPE_ALIASES[s]||s;
+}
+
+function displayRoomCategory(v){
+  const c=canonicalCategory(v);
+  return ROOM_TYPE_LABELS[c]||String(v||'').trim();
+}
+
+if(ensureRoomCapacityRows())Storage.save(db);
+
+/* ---------- POINTS ENGINE ---------- */
+function pointRuleFor(resort,category,checkin){
+  if(!resort||!category||!checkin)return null;
+  let rr=db.point_rules.filter(r=>normText(r.resort)===normText(resort)&&(!r.date_from||checkin>=r.date_from)&&(!r.date_to||checkin<=r.date_to));
+  let nc=canonicalCategory(category||'');
+  rr=rr.map(r=>{
+    let rc=canonicalCategory(r.category||''),catScore=!nc?0:(rc===nc?3:(nc.includes(rc)||rc.includes(nc)?2:0));
+    let span=(r.date_from&&r.date_to)?Math.max(1,(new Date(r.date_to+'T00:00:00Z')-new Date(r.date_from+'T00:00:00Z'))/86400000+1):999999;
+    return{r,catScore,span,created:r.created_at||''};
+  }).filter(x=>!nc||x.catScore>0);
+  rr.sort((a,b)=>b.catScore-a.catScore||a.span-b.span||b.created.localeCompare(a.created));
+  return rr[0]?.r||null;
+}
+function calculateReservationPoints(resort,category,checkin){let r=pointRuleFor(resort,category,checkin);return r?{points:n(r.points),rule:r}:null} const metricsFor=(clientId,from='',to='',campaignId='')=>db.campaign_metrics.filter(m=>m.client_id===clientId&&(!campaignId||m.campaign_id===campaignId)&&(!from||m.date_from>=from)&&(!to||m.date_to<=to));
+const metricsOverlap=(clientId,from='',to='',campaignId='')=>db.campaign_metrics.filter(m=>m.client_id===clientId&&(!campaignId||m.campaign_id===campaignId)&&(!from||m.date_to>=from)&&(!to||m.date_from<=to));
+const sumMetrics=arr=>{let o={};['ad_spend','total_leads','warm_leads','qualified_leads','hot_leads','abandoned_carts','active_followups','emails_sent','whatsapp_messages','clicks_weeks','new_leads','returning_visitors','leads_ads','organic_leads'].forEach(k=>o[k]=arr.reduce((a,x)=>a+n(x[k]),0)); let w=arr.reduce((a,x)=>a+n(x.total_leads),0)||1;['interest_rate','response_rate','avg_response_time','avg_pages','lead_quality_score'].forEach(k=>o[k]=(arr.length?arr.reduce((a,x)=>a+n(x[k])*n(x.total_leads),0)/w:0));o.lead_to_qualified=o.total_leads?o.qualified_leads/o.total_leads*100:0;o.cart_abandonment=o.total_leads?o.abandoned_carts/o.total_leads*100:0;o.repeat_rate=o.total_leads?o.returning_visitors/o.total_leads*100:0;return o};
+/* ---------- MASTER DASHBOARD ---------- */
+let masterFilterState={from:'',to:'',client:'',campaign:'',resort:'',level:'',status:''};
+function master(){
+  let s=masterFilterState;
+  let clientsFiltered=db.clients.filter(c=>(!s.client||c.id===s.client)&&(!s.level||(c.member_levels||[]).includes(s.level))&&(!s.resort||(c.resorts||[]).includes(s.resort)));
+  let clientIds=new Set(clientsFiltered.map(c=>c.id));
+  let campaignsFiltered=db.campaigns.filter(c=>clientIds.has(c.client_id)&&(!s.campaign||c.id===s.campaign)&&(!s.status||c.status===s.status));
+  let campaignIds=new Set(campaignsFiltered.map(c=>c.id));
+  let metricRows=db.campaign_metrics.filter(m=>clientIds.has(m.client_id)&&campaignIds.has(m.campaign_id)&&(!s.from||m.date_from>=s.from)&&(!s.to||m.date_to<=s.to));
+  let ms=sumMetrics(metricRows);
+  let reservationRows=db.reservations.filter(r=>clientIds.has(r.client_id)&&(!s.from||(r.booking_date||r.checkin||'')>=s.from)&&(!s.to||(r.booking_date||r.checkin||'')<=s.to));
+  let commercial=reservationRows.filter(r=>['Confirmed','Completed'].includes(r.status));
+  let revenue=commercial.reduce((a,r)=>a+n(r.revenue||r.rental_price),0);
+  let adSpend=n(ms.ad_spend)||campaignsFiltered.reduce((a,c)=>a+n(c.ad_spend),0),roas=adSpend?revenue/adSpend:0;
+  let active=clientsFiltered.filter(x=>x.status==='Active').length,ac=campaignsFiltered.filter(x=>x.status==='Active').length;
+  let overlapRows=db.campaign_metrics.filter(m=>clientIds.has(m.client_id)&&campaignIds.has(m.campaign_id)&&(!s.from||m.date_to>=s.from)&&(!s.to||m.date_from<=s.to)),excludedPartial=(s.from&&s.to)?overlapRows.filter(x=>!metricRows.includes(x)).length:0;
+  let cards=[['Total Clients',clientsFiltered.length],['Active Clients',active],['Total Leads',ms.total_leads],['Warm Leads',ms.warm_leads],['Qualified Leads',ms.qualified_leads],['Hot Leads',ms.hot_leads],['Interest Rate',fmt(ms.interest_rate)+'%'],['Abandoned Carts',ms.abandoned_carts],['Active Follow-ups',ms.active_followups],['Emails Sent',ms.emails_sent],['WhatsApp Messages',ms.whatsapp_messages],['Clicks on Weeks',ms.clicks_weeks],['Response Rate',fmt(ms.response_rate)+'%'],['Avg. Response Time',fmt(ms.avg_response_time)+' min'],['New Leads',ms.new_leads],['Returning Visitors',ms.returning_visitors],['Leads from Ads',ms.leads_ads],['Organic Leads',ms.organic_leads],['Bookings',commercial.length],['Revenue',usd(revenue)],['ROAS',adSpend?fmt(roas)+'x':'—'],['Active Campaigns',ac]];if(excludedPartial)cards.push(['Excluded Partial KPI Periods',excludedPartial]);
+  $('#masterCards').innerHTML=cards.map(x=>`<div class="card"><small>${x[0]}</small><strong>${x[1]}</strong></div>`).join('');
+  $('#masterFilters').innerHTML=`<div class="field"><label>Date From</label><input type="date" id="mfFrom" value="${esc(s.from)}"></div><div class="field"><label>Date To</label><input type="date" id="mfTo" value="${esc(s.to)}"></div><div class="field"><label>Client</label><select id="mfClient"><option value="">All clients</option>${db.clients.map(c=>`<option value="${c.id}" ${s.client===c.id?'selected':''}>${esc(c.name)}</option>`).join('')}</select></div><div class="field"><label>Campaign</label><select id="mfCampaign"><option value="">All campaigns</option>${db.campaigns.filter(c=>!s.client||c.client_id===s.client).map(c=>`<option value="${c.id}" ${s.campaign===c.id?'selected':''}>${esc(c.name)}</option>`).join('')}</select></div><div class="field"><label>Resort</label><select id="mfResort"><option value="">All resorts</option>${resorts.map(x=>`<option ${s.resort===x?'selected':''}>${x}</option>`).join('')}</select></div><div class="field"><label>Member Level</label><select id="mfLevel"><option value="">All levels</option>${levels.map(x=>`<option ${s.level===x?'selected':''}>${x}</option>`).join('')}</select></div><div class="field"><label>Campaign Status</label><select id="mfStatus"><option value="">All statuses</option>${['Draft','Active','Paused','Completed','Archived'].map(x=>`<option ${s.status===x?'selected':''}>${x}</option>`).join('')}</select></div><div class="field"><label>&nbsp;</label><button class="btn" id="mfReset">Reset Filters</button></div>`;
+  $('#recentClients').innerHTML=clientTable(clientsFiltered.slice(-5).reverse(),false);
+  [['mfFrom','from'],['mfTo','to'],['mfClient','client'],['mfCampaign','campaign'],['mfResort','resort'],['mfLevel','level'],['mfStatus','status']].forEach(([id,key])=>{let el=$('#'+id);if(el)el.onchange=()=>{masterFilterState[key]=el.value;if(key==='client')masterFilterState.campaign='';master()}});
+  if($('#mfReset'))$('#mfReset').onclick=()=>{masterFilterState={from:'',to:'',client:'',campaign:'',resort:'',level:'',status:''};master()};
+}
+function clientTable(list,actions=true){if(!list.length)return'<div class="empty">No clients stored yet.</div>';return `<div class="tablewrap"><table><thead><tr><th>Member Name</th><th>Contract</th><th>Points</th><th>Member Level</th><th>Primary Resort</th><th>Status</th><th>Campaigns</th><th>Leads</th><th>Qualified</th><th>Reservations</th>${actions?'<th>Actions</th>':''}</tr></thead><tbody>${list.map(c=>{let m=sumMetrics(metricsFor(c.id)),cc=db.campaigns.filter(x=>x.client_id===c.id).length,rr=db.reservations.filter(x=>x.client_id===c.id).length;return `<tr><td><b>${esc(c.name)}</b><br><span class="muted">${esc(c.email||'')}</span></td><td>${esc(c.contract||'')}</td><td>${fmt(c.points)}<br><span class="muted">${fmt(n(c.points)-pointsUsedForClient(c.id))} available</span></td><td>${(c.member_levels||[]).map(x=>`<span class="badge">${esc(x)}</span>`).join(' ')}</td><td>${esc((c.resorts||[]).join(', '))}</td><td><span class="badge">${esc(c.status||'Active')}</span></td><td>${cc}</td><td>${fmt(m.total_leads)}</td><td>${fmt(m.qualified_leads)}</td><td>${rr}</td>${actions?`<td><button class="btn" data-view-client="${c.id}">View</button> <button class="btn" data-edit-client="${c.id}">Edit</button></td>`:''}</tr>`}).join('')}</tbody></table></div>`}
+function clients(){let q=($('#clientSearch')?.value||'').toLowerCase(),st=$('#clientStatusFilter')?.value||'';let list=db.clients.filter(c=>(!q||JSON.stringify(c).toLowerCase().includes(q))&&(!st||c.status===st)).sort((a,b)=>(a.name||'').localeCompare(b.name||''));$('#clientsTable').innerHTML=clientTable(list)}
+function campaigns(){if(!db.campaigns.length){$('#campaignsTable').innerHTML='<div class="empty">No campaigns stored yet.</div>';return}$('#campaignsTable').innerHTML=`<div class="tablewrap"><table><thead><tr><th>Campaign</th><th>Client</th><th>Platform</th><th>Status</th><th>Dates</th><th>Budget</th><th>Ad Spend</th><th>KPIs</th><th>Actions</th></tr></thead><tbody>${db.campaigns.map(c=>`<tr><td><b>${esc(c.name)}</b><br><span class="muted">${esc(c.campaign_code)}</span></td><td>${esc(getClient(c.client_id)?.name||'')}</td><td>${esc(c.platform||'')}</td><td><span class="badge">${esc(c.status)}</span></td><td>${esc(c.start_date||'')} — ${esc(c.end_date||'')}</td><td>${usd(c.budget)}</td><td>${usd(c.ad_spend)}</td><td>${db.campaign_metrics.filter(m=>m.campaign_id===c.id).length} periods</td><td><button class="btn" data-kpi="${c.id}">Add KPI</button> <button class="btn" data-edit-campaign="${c.id}">Edit</button> <button class="btn danger" title="Delete campaign" data-delete-campaign="${c.id}">Delete</button></td></tr>`).join('')}</tbody></table></div>`}
+function bookings(){if(!db.reservations.length){$('#bookingsTable').innerHTML='<div class="empty">No reservations stored yet.</div>';return}$('#bookingsTable').innerHTML=`<div class="tablewrap"><table><thead><tr><th>ID</th><th>Client</th><th>Resort</th><th>Category</th><th>Check-in</th><th>Days to Check-in</th><th>Capacity</th><th>Status</th><th>Points</th><th>Revenue</th><th>Actions</th></tr></thead><tbody>${db.reservations.slice().sort((a,b)=>(a.checkin||'9999').localeCompare(b.checkin||'9999')).map(r=>`<tr><td>${esc(r.reservation_code)}</td><td>${esc(getClient(r.client_id)?.name||'')}</td><td>${esc(r.resort)}</td><td>${esc(r.category)}</td><td>${esc(r.checkin)}</td><td><b>${r.checkin?fmt(daysToCheckin(r.checkin)):'—'}</b></td><td><b>${n(r.max_occupancy)||capacityForRoomType(r.category)||'—'}</b><div class="muted mini">${esc(r.occupancy_rule||roomCapacityRule(r.category).family_rule||'')}</div></td><td><span class="badge">${esc(r.status)}</span></td><td>${fmt(r.points_used)}</td><td>${usd(r.revenue||r.rental_price)}</td><td><button class="btn" data-edit-reservation="${r.id}">Edit</button> <button class="btn danger" title="Delete reservation" data-delete-reservation="${r.id}">Delete</button></td></tr>`).join('')}</tbody></table></div>`}
+function leads(){let rows=db.clients.map(c=>{let m=sumMetrics(metricsFor(c.id));return `<tr><td>${esc(c.name)}</td><td>${fmt(m.total_leads)}</td><td>${fmt(m.warm_leads)}</td><td>${fmt(m.qualified_leads)}</td><td>${fmt(m.hot_leads)}</td><td>${fmt(m.lead_to_qualified)}%</td></tr>`}).join('');$('#leadsView').innerHTML=rows?`<div class="tablewrap"><table><thead><tr><th>Client</th><th>Total</th><th>Warm</th><th>Qualified</th><th>Hot</th><th>Lead-to-Qualified</th></tr></thead><tbody>${rows}</tbody></table></div>`:'<div class="empty">No KPI data yet.</div>'}
+function points(){
+  let rows=db.clients.map(c=>{let used=pointsUsedForClient(c.id),rem=n(c.points)-used;return `<tr><td><b>${esc(c.name)}</b></td><td>${fmt(c.points)}</td><td>${fmt(used)}</td><td><b style="color:${rem<0?'var(--danger)':'var(--ok)'}">${fmt(rem)}</b></td><td>${esc((c.member_levels||[]).join(', '))}</td><td>${esc((c.resorts||[]).join(', '))}</td></tr>`}).join('');
+  $('#pointsTable').innerHTML=rows?`<div class="tablewrap"><table><thead><tr><th>Client</th><th>Total Points</th><th>Points Used</th><th>Available Points</th><th>Member Level</th><th>Resorts</th></tr></thead><tbody>${rows}</tbody></table></div>`:'<div class="empty">No clients stored yet.</div>';
+  $('#pointChartsView').innerHTML=db.point_charts.length?`<div class="doc-grid">${db.point_charts.map(x=>`<div class="doc-card"><b>${esc(x.name||'Point Chart')}</b><div class="muted mini">${esc(x.resort)}${x.year?' · '+esc(x.year):''}</div><div class="doc-actions"><button class="btn" data-open-file="${esc(x.file_id)}">Open</button><button class="btn" data-chart-rule="${x.id}">+ Rule</button><button class="btn danger" title="Delete point chart" data-delete-chart="${x.id}">Delete</button></div>${x.extracted_text?`<details style="margin-top:8px"><summary>OCR text</summary><div class="preview">${esc(x.extracted_text.slice(0,3000))}</div></details>`:''}</div>`).join('')}</div>`:'<div class="empty">No point charts uploaded.</div>';
+  $('#pointRulesView').innerHTML=db.point_rules.length?`<div class="tablewrap"><table><thead><tr><th>Resort</th><th>Category</th><th>Season</th><th>Date From</th><th>Date To</th><th>Points</th><th>Source</th><th></th></tr></thead><tbody>${db.point_rules.map(r=>`<tr><td>${esc(r.resort)}</td><td>${esc(r.category)}</td><td>${esc(r.season||'')}</td><td>${esc(r.date_from||'')}</td><td>${esc(r.date_to||'')}</td><td><b>${fmt(r.points)}</b></td><td>${esc(db.point_charts.find(x=>x.id===r.point_chart_id)?.name||'Manual')}</td><td><button class="btn danger" title="Delete point rule" data-delete-rule="${r.id}">Delete</button></td></tr>`).join('')}</tbody></table></div>`:'<div class="empty">No structured point rules yet. Add rules from the official point chart.</div>';
+
+  ensureRoomCapacityRows();
+  let capRows=ROOM_TYPES.map(roomType=>{
+    let cap=(db.room_capacities||[]).find(x=>canonicalCategory(x.room_type)===canonicalCategory(roomType));
+    let rule=roomCapacityRule(roomType);return `<tr><td><b>${esc(roomType)}</b></td><td><input type="number" min="0" step="1" data-room-capacity="${esc(roomType)}" value="${n(rule.max_occupancy)}" style="width:110px;padding:7px;border:1px solid var(--line);border-radius:6px"></td><td>${n(rule.max_adults)||'—'}</td><td class="muted">${esc(rule.family_rule||'Not configured')}${rule.adult_rule?` / ${esc(rule.adult_rule)}`:''}</td></tr>`;
+  }).join('');
+  $('#roomCapacityView').innerHTML=`<div class="tablewrap"><table style="min-width:520px"><thead><tr><th>Room Type</th><th>Max Occupancy</th><th>Max Adults</th><th>Rule</th></tr></thead><tbody>${capRows}</tbody></table></div>`;
+
+}
+
+function saveRoomCapacities(){
+  ensureRoomCapacityRows();
+  $$('[data-room-capacity]').forEach(el=>{
+    let roomType=el.dataset.roomCapacity,row=db.room_capacities.find(x=>canonicalCategory(x.room_type)===canonicalCategory(roomType));
+    if(row){let defaults=DEFAULT_ROOM_CAPACITY_RULES[canonicalCategory(roomType)]||null;row.max_occupancy=n(el.value);if(defaults){row.max_adults=row.max_adults||defaults.max_adults;row.family_rule=row.family_rule||defaults.family_rule;row.adult_rule=row.adult_rule||defaults.adult_rule}row.updated_at=new Date().toISOString()}
+  });
+  save();log('room_capacity_update','room_capacities','Room type maximum occupancy updated');points();updateSystemHealth();
+}
+
+function calendar(){let items=db.reservations.slice().sort((a,b)=>a.checkin.localeCompare(b.checkin));$('#calendarView').innerHTML=items.length?items.map(r=>`<div class="card" style="margin-bottom:8px"><b>${esc(r.checkin)} — ${esc(r.checkout)}</b> · ${esc(getClient(r.client_id)?.name||'')} · ${esc(r.resort)} <span class="badge">${esc(r.status)}</span></div>`).join(''):'<div class="empty">No reservations scheduled.</div>'}
+function optionsClients(sel=''){return `<option value="">Select client</option>`+db.clients.map(c=>`<option value="${c.id}" ${c.id===sel?'selected':''}>${esc(c.name)}</option>`).join('')}
+function modal(title,body,onSave){$('#modalRoot').innerHTML=`<div class="modal"><div class="modalbox"><div class="modalhead"><h2>${title}</h2><button class="close" type="button">×</button></div><form id="modalForm">${body}<div class="row" style="justify-content:flex-end;margin-top:18px"><button type="button" class="btn" id="cancelModal">Cancel</button><button class="btn primary" id="modalSaveBtn">Save</button></div></form></div></div>`;$('.close').onclick=$('#cancelModal').onclick=()=>$('#modalRoot').innerHTML='';$('#modalForm').onsubmit=async e=>{e.preventDefault();let btn=$('#modalSaveBtn');if(btn){btn.disabled=true;btn.textContent='Saving…'}try{let result=await onSave(new FormData(e.target));if(result!==false){$('#modalRoot').innerHTML='';renderAll()}else if(btn){btn.disabled=false;btn.textContent='Save'}}catch(err){if(btn){btn.disabled=false;btn.textContent='Save'}alert('Save error: '+(err?.message||err))}}}
+function choiceHTML(name,vals,selected=[]){return `<div class="choice" data-choice="${name}">${vals.map(v=>`<button type="button" class="${selected.includes(v)?'on':''}" data-value="${esc(v)}">${esc(v)}</button>`).join('')}</div><input type="hidden" name="${name}" value="${esc(selected.join('|'))}">`}
+function bindChoices(){$$('[data-choice]').forEach(g=>g.onclick=e=>{let b=e.target.closest('button');if(!b)return;b.classList.toggle('on');let vals=$$('button.on',g).map(x=>x.dataset.value);g.nextElementSibling.value=vals.join('|')})}
+/* ---------- DATA ENTRY MODALS ---------- */
+function clientModal(id=''){let c=getClient(id)||{member_levels:[],resorts:[],status:'Active',start_date:today(),end_date:addYear(today())};modal(id?'Edit Client':'Create Client',`<div class="subtle" style="margin-bottom:12px"><b>Client Profile</b><div class="muted">Personal information, membership, resorts and contract validity are saved together.</div></div><div class="formgrid"><div class="field"><label>Member Name</label><input name="name" required value="${esc(c.name||'')}"></div><div class="field"><label>Contract</label><input name="contract" value="${esc(c.contract||'')}"></div><div class="field"><label>Phone</label><input name="phone" value="${esc(c.phone||'')}"></div><div class="field"><label>Email</label><input name="email" value="${esc(c.email||'')}"></div><div class="field"><label>Points</label><input type="number" name="points" value="${n(c.points)}"></div><div class="field"><label>Enrollment Fee</label><input name="enrollment_fee" value="${esc(c.enrollment_fee||'')}"></div><div class="field"><label>Client Type</label><input name="client_type" value="${esc(c.client_type||'')}"></div><div class="field"><label>Client Level</label><input name="client_level" value="${esc(c.client_level||'')}"></div><div class="field"><label>Start Date</label><input type="date" name="start_date" id="clientStart" value="${esc(c.start_date||'')}"></div><div class="field"><label>End Date</label><input type="date" name="end_date" id="clientEnd" value="${esc(c.end_date||'')}"></div><div class="field"><label>Status</label><select name="status"><option ${c.status==='Active'?'selected':''}>Active</option><option ${c.status==='Inactive'?'selected':''}>Inactive</option><option ${c.status==='Paused'?'selected':''}>Paused</option></select></div><div class="field wide"><label>Member Level (multiple)</label>${choiceHTML('member_levels',levels,c.member_levels||[])}</div><div class="field wide"><label>Primary Resort (multiple)</label>${choiceHTML('resorts',resorts,c.resorts||[])}</div></div>`,fd=>{let obj=id?c:{id:uid('client'),created_at:new Date().toISOString()};for(let[k,v]of fd)obj[k]=v;if(obj.start_date&&obj.end_date&&obj.end_date<obj.start_date){alert('End Date cannot be earlier than Start Date.');return false}let dup=db.clients.find(x=>x.id!==obj.id&&((obj.contract&&x.contract&&normText(x.contract)===normText(obj.contract))||(obj.email&&x.email&&normText(x.email)===normText(obj.email))));if(dup&&!confirm(`Another client may match this Contract or Email: ${dup.name}. Save anyway?`))return false;obj.points=n(obj.points);obj.member_levels=(obj.member_levels||'').split('|').filter(Boolean);obj.resorts=(obj.resorts||'').split('|').filter(Boolean);obj.updated_at=new Date().toISOString();if(!id)db.clients.push(obj);save();log(id?'client_update':'client_create',obj.id,obj.name);return true});bindChoices();$('#clientStart').onchange=e=>$('#clientEnd').value=addYear(e.target.value)}
+function campaignModal(clientId='',campaignId=''){
+  let existing=campaignId?getCampaign(campaignId):null,c=existing||{client_id:clientId,status:'Draft'};
+  modal(existing?'Edit Campaign':'Add Campaign',`<div class="formgrid"><div class="field"><label>Client</label><select name="client_id" required>${optionsClients(c.client_id||clientId)}</select></div><div class="field"><label>Campaign Name</label><input name="name" required value="${esc(c.name||'')}"></div><div class="field"><label>Campaign ID</label><input name="campaign_code" value="${esc(c.campaign_code||('CMP-'+Date.now().toString().slice(-6)))}"></div><div class="field"><label>Start Date</label><input type="date" name="start_date" value="${esc(c.start_date||'')}"></div><div class="field"><label>End Date</label><input type="date" name="end_date" value="${esc(c.end_date||'')}"></div><div class="field"><label>Status</label><select name="status">${['Draft','Active','Paused','Completed','Archived'].map(x=>`<option ${c.status===x?'selected':''}>${x}</option>`).join('')}</select></div><div class="field"><label>Campaign Type</label><input name="campaign_type" value="${esc(c.campaign_type||'')}"></div><div class="field"><label>Platform</label><select name="platform">${['Google Ads','Meta Ads','Instagram','Facebook','Google Search','Email Marketing','WhatsApp','Organic','Referral','Other'].map(x=>`<option ${c.platform===x?'selected':''}>${x}</option>`).join('')}</select></div><div class="field"><label>Marketing Channel</label><input name="channel" value="${esc(c.channel||'')}"></div><div class="field"><label>Budget</label><input type="number" name="budget" value="${n(c.budget)}"></div><div class="field"><label>Ad Spend</label><input type="number" name="ad_spend" value="${n(c.ad_spend)}"></div><div class="field"><label>Objective</label><input name="objective" value="${esc(c.objective||'')}"></div><div class="field"><label>Target Audience</label><input name="target_audience" value="${esc(c.target_audience||'')}"></div><div class="field"><label>Location</label><input name="location" value="${esc(c.location||'')}"></div><div class="field wide"><label>Notes</label><textarea name="notes">${esc(c.notes||'')}</textarea></div></div>`,fd=>{let o=existing||{id:uid('campaign'),created_at:new Date().toISOString()};for(let[k,v]of fd)o[k]=v;if(o.start_date&&o.end_date&&o.end_date<o.start_date){alert('Campaign End Date cannot be earlier than Start Date.');return false}let duplicateCode=db.campaigns.find(x=>x.id!==o.id&&o.campaign_code&&x.campaign_code===o.campaign_code);if(duplicateCode){alert('Campaign ID already exists.');return false}o.budget=n(o.budget);o.ad_spend=n(o.ad_spend);o.updated_at=new Date().toISOString();if(!existing)db.campaigns.push(o);save();log(existing?'campaign_update':'campaign_create',o.id,o.name);return true})
+}
+function kpiModal(campaignId){let c=getCampaign(campaignId);if(!c)return;let fields=[['ad_spend','Ad Spend (USD)'],['total_leads','Total Leads'],['warm_leads','Warm Leads'],['qualified_leads','Qualified Leads'],['hot_leads','Hot Leads'],['interest_rate','Interest Rate %'],['abandoned_carts','Abandoned Carts'],['active_followups','Active Follow-ups'],['emails_sent','Emails Sent'],['whatsapp_messages','WhatsApp Messages'],['clicks_weeks','Clicks on Weeks'],['response_rate','Response Rate %'],['avg_response_time','Average Response Time (min)'],['new_leads','New Leads'],['returning_visitors','Returning Visitors'],['leads_ads','Leads from Ads'],['organic_leads','Organic Leads'],['avg_pages','Average Pages Viewed'],['lead_quality_score','Lead Quality Score']];modal('Add Marketing KPI Period',`<div class="formgrid"><div class="field"><label>Campaign</label><input value="${esc(c.name)}" disabled></div><div class="field"><label>Date From</label><input name="date_from" type="date" required></div><div class="field"><label>Date To</label><input name="date_to" type="date" required></div>${fields.map(([k,l])=>`<div class="field"><label>${l}</label><input name="${k}" type="number" step="0.1" value="0"></div>`).join('')}</div>`,fd=>{let o={id:uid('metric'),client_id:c.client_id,campaign_id:c.id,created_at:new Date().toISOString()};for(let[k,v]of fd)o[k]=v;if(!o.date_from||!o.date_to||o.date_to<o.date_from){alert('Enter a valid KPI date range.');return false}let overlap=db.campaign_metrics.find(x=>x.campaign_id===c.id&&x.date_from<=o.date_to&&x.date_to>=o.date_from);if(overlap){alert(`This KPI period overlaps an existing period (${overlap.date_from} — ${overlap.date_to}). Overlapping aggregate periods would double-count report totals.`);return false}fields.forEach(([k])=>o[k]=n(o[k]));db.campaign_metrics.push(o);save();log('kpi_create',o.id,c.name);return true})}
+function bookingModal(clientId='',reservationId=''){
+  let existing=reservationId?db.reservations.find(x=>x.id===reservationId):null,r=existing||{client_id:clientId,status:'Reserved'};
+  modal(existing?'Edit Reservation':'Add Reservation',`<div class="formgrid">
+  <div class="field"><label>Client</label><select name="client_id" id="bookingClient" required>${optionsClients(r.client_id||clientId)}</select></div>
+  <div class="field"><label>Reservation ID</label><input name="reservation_code" value="${esc(r.reservation_code||('RSV-'+Date.now().toString().slice(-6)))}"></div>
+  <div class="field"><label>Resort</label><select name="resort" id="bookingResort">${resorts.map(x=>`<option ${r.resort===x?'selected':''}>${x}</option>`).join('')}</select></div>
+  <div class="field"><label>Category</label><input name="category" id="bookingCategory" value="${esc(r.category||'')}" placeholder="e.g. 1 Bedroom"></div>
+  <div class="field"><label>Unit Type</label><input name="unit_type" value="${esc(r.unit_type||'')}"></div>
+  <div class="field"><label>Check-in</label><input name="checkin" id="bookingCheckin" type="date" value="${esc(r.checkin||'')}"></div>
+  <div class="field"><label>Days to Check-in</label><input id="bookingDaysToCheckin" value="${r.checkin?daysToCheckin(r.checkin):''}" readonly></div>
+  <div class="field"><label>Check-out</label><input name="checkout" type="date" value="${esc(r.checkout||'')}"></div>
+  <div class="field"><label>Booking Date</label><input name="booking_date" type="date" value="${esc(r.booking_date||'')}"></div>
+  <div class="field"><label>Status</label><select name="status">${['Reserved','Confirmed','Pending','Cancelled','Completed'].map(x=>`<option ${r.status===x?'selected':''}>${x}</option>`).join('')}</select></div>
+  <div class="field"><label>Guests / Party Size</label><input name="guests" id="bookingGuests" type="number" min="0" step="1" value="${n(r.guests)}"><div id="bookingCapacityHint" class="muted mini"></div></div>
+  <div class="field"><label>Points Used</label><input name="points_used" id="bookingPoints" type="number" value="${n(r.points_used)}"><button type="button" class="btn" id="calcBookingPoints" style="margin-top:6px;width:100%">Calculate from Point Chart</button></div>
+  <div class="field"><label>Gross Revenue (USD)</label><input name="revenue" type="number" step="0.01" value="${n(r.revenue||r.rental_price)}"></div>
+  <div class="field"><label>Commission (USD)</label><input name="commission" type="number" step="0.01" value="${n(r.commission)}"></div>
+  <div class="field"><label>Net Revenue (USD)</label><input name="net_revenue" type="number" step="0.01" value="${n(r.net_revenue)}"></div>
+  <div class="field"><label>Booking Source</label><input name="booking_source" value="${esc(r.booking_source||'')}"></div>
+  <div class="field wide"><div id="pointCalcStatus" class="status-line">Enter resort, category and check-in date to calculate points.</div></div>
+  <div class="field wide"><label>Notes</label><textarea name="notes">${esc(r.notes||'')}</textarea></div></div>`,fd=>{
+    let o=existing||{id:uid('reservation'),created_at:new Date().toISOString()};for(let[k,v]of fd)o[k]=v;
+    if(o.checkin&&o.checkout&&o.checkout<o.checkin){alert('Check-out cannot be earlier than Check-in.');return false}let duplicate=db.reservations.find(x=>x.id!==o.id&&((o.reservation_code&&x.reservation_code&&normText(x.reservation_code)===normText(o.reservation_code))||(x.client_id===o.client_id&&normText(x.resort)===normText(o.resort)&&x.checkin===o.checkin&&x.checkout===o.checkout&&canonicalCategory(x.category)===canonicalCategory(o.category))));if(duplicate&&!confirm(`A possible duplicate reservation already exists (${duplicate.reservation_code}). Save anyway?`))return false;
+    if(!n(o.points_used)){let calc=calculateReservationPoints(o.resort,o.category,o.checkin);if(calc)o.points_used=calc.points}
+    ['points_used','revenue','commission','net_revenue','guests'].forEach(k=>o[k]=n(o[k]));o.days_to_checkin=daysToCheckin(o.checkin);let capRule=roomCapacityRule(o.category);o.max_occupancy=capRule.max_occupancy;o.max_adults=capRule.max_adults;o.occupancy_rule=capRule.family_rule;o.adult_occupancy_rule=capRule.adult_rule;let maxOcc=capRule.max_occupancy;if(o.guests>0&&maxOcc>0&&o.guests>maxOcc){alert(`Party size ${o.guests} exceeds max occupancy ${maxOcc} for ${displayRoomCategory(o.category)}.`);return false}if(!o.net_revenue&&o.revenue)o.net_revenue=Math.max(0,o.revenue-o.commission);
+    let existingPoints=existing&&existing.client_id===o.client_id&&activeReservation(existing)?n(existing.points_used):0,available=pointsRemainingForClient(o.client_id)+existingPoints;
+    if(o.status!=='Cancelled'&&o.points_used>available){if(!confirm(`This reservation requires ${fmt(o.points_used)} points, but the client currently has ${fmt(available)} available before this reservation. Save anyway?`))return false}
+    o.updated_at=new Date().toISOString();if(!existing)db.reservations.push(o);save();log(existing?'reservation_update':'reservation_create',o.id,o.reservation_code);return true
+  });
+  const refreshCapacityHint=()=>{let rule=roomCapacityRule($('#bookingCategory').value),maxOcc=rule.max_occupancy,guests=n($('#bookingGuests').value),el=$('#bookingCapacityHint');if(!el)return;el.textContent=maxOcc?`Max ${maxOcc} guests · ${rule.family_rule}${rule.adult_rule?' / '+rule.adult_rule:''}${guests>maxOcc?' · EXCEEDED':''}`:'Max occupancy not configured';el.style.color=guests>0&&maxOcc>0&&guests>maxOcc?'var(--danger)':''};
+  $('#bookingCheckin').onchange=()=>{$('#bookingDaysToCheckin').value=$('#bookingCheckin').value?daysToCheckin($('#bookingCheckin').value):''};
+  $('#bookingCategory').onchange=refreshCapacityHint;$('#bookingGuests').oninput=refreshCapacityHint;refreshCapacityHint();
+  $('#calcBookingPoints').onclick=()=>{let calc=calculateReservationPoints($('#bookingResort').value,$('#bookingCategory').value,$('#bookingCheckin').value);if(calc){$('#bookingPoints').value=calc.points;$('#pointCalcStatus').className='status-line ok';$('#pointCalcStatus').textContent=`${fmt(calc.points)} points matched: ${calc.rule.season||'date range'} · ${calc.rule.date_from||''} — ${calc.rule.date_to||''}`}else{$('#pointCalcStatus').className='status-line warn';$('#pointCalcStatus').textContent='No matching Point Rule found. Add the hotel point chart/rule or enter points manually.'}};
+}
+
+function pointRuleModal(chartId=''){
+  let chart=db.point_charts.find(x=>x.id===chartId);
+  modal('Add Point Rule',`<div class="formgrid">
+    <div class="field"><label>Point Chart Source</label><select name="point_chart_id"><option value="">Manual</option>${db.point_charts.map(x=>`<option value="${x.id}" ${x.id===chartId?'selected':''}>${esc(x.name)} — ${esc(x.resort)}</option>`).join('')}</select></div>
+    <div class="field"><label>Resort</label><select name="resort">${resorts.map(x=>`<option ${chart?.resort===x?'selected':''}>${x}</option>`).join('')}</select></div>
+    <div class="field"><label>Room Category</label><input name="category" required placeholder="e.g. 1 Bedroom"></div>
+    <div class="field"><label>Season / Label</label><input name="season" placeholder="e.g. Winter / Holiday"></div>
+    <div class="field"><label>Date From</label><input name="date_from" type="date" required></div>
+    <div class="field"><label>Date To</label><input name="date_to" type="date" required></div>
+    <div class="field"><label>Points</label><input name="points" type="number" required></div>
+    <div class="field wide"><label>Notes</label><textarea name="notes"></textarea></div>
+  </div>`,fd=>{let o={id:uid('prule'),created_at:new Date().toISOString()};for(let[k,v]of fd)o[k]=v;o.points=n(o.points);db.point_rules.push(o);save();log('point_rule_create',o.id,`${o.resort} ${o.category}`);return true});
+}
+function parsePointChartProposals(text,resort,chartId,year){
+  let proposals=[],lines=String(text||'').replace(/\r/g,'\n').split(/\n+/).map(x=>x.trim()).filter(Boolean);
+  const months='Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?';
+  const roomRx=/(studio|junior suite|one bedroom(?:\s+villa)?|1\s*bed(?:room)?(?:\s+villa)?|two bedroom(?:\s+villa)?|2\s*bed(?:room)?(?:\s+villa)?|three bedroom(?:\s+villa)?|3\s*bed(?:room)?(?:\s+villa)?|penthouse|suite|loft)/i;
+  const seasonRx=/(holiday|winter|summer|spring|fall|autumn|value|high season|low season|peak|prime|premium|platinum|gold)/i;
+  function isoGuess(s){
+    let m=s.match(new RegExp(`(${months})\\s*(\\d{1,2})(?:\\s*[,/-]\\s*(\\d{4}))?`,'i'));if(!m)return'';
+    let map={jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,nov:11,dec:12},mo=map[m[1].slice(0,3).toLowerCase()],yy=Number(m[3]||year||new Date().getFullYear());return `${yy}-${String(mo).padStart(2,'0')}-${String(Number(m[2])).padStart(2,'0')}`;
+  }
+  function safePointCandidates(line,dateMatches){
+    let cleaned=line;dateMatches.forEach(d=>cleaned=cleaned.replace(d,' '));cleaned=cleaned.replace(/\b(?:19|20)\d{2}\b/g,' ');
+    let explicit=[...cleaned.matchAll(/(?:points?|pts?)\s*[:#-]?\s*([\d,]{3,7})|([\d,]{3,7})\s*(?:points?|pts?)/ig)].map(m=>Number(String(m[1]||m[2]).replace(/,/g,''))).filter(v=>v>=100);
+    if(explicit.length)return{values:explicit,explicit:true};
+    let values=(cleaned.match(/\b\d{3,7}\b/g)||[]).map(x=>Number(x.replace(/,/g,''))).filter(v=>v>=100&&!(v>=1900&&v<=2100));
+    return{values,explicit:false};
+  }
+  for(let line of lines){
+    let room=line.match(roomRx),season=line.match(seasonRx);if(!room)continue;
+    let dateMatches=[...line.matchAll(new RegExp(`(${months})\\s*\\d{1,2}(?:\\s*[,/-]\\s*\\d{4})?`,'ig'))].map(x=>x[0]);
+    let pc=safePointCandidates(line,dateMatches);if(!pc.values.length)continue;
+    let category=room[0].replace(/\s+/g,' ').trim(),points=pc.values[pc.values.length-1],from=dateMatches[0]?isoGuess(dateMatches[0]):'',to=dateMatches[1]?isoGuess(dateMatches[1]):'';
+    let confidence=.48+(room?0.12:0)+(dateMatches.length>=2?0.12:0)+(season?0.05:0)+(pc.explicit?0.20:0.05);
+    proposals.push({id:uid('pprop'),point_chart_id:chartId,resort,category,season:season?season[0]:'',date_from:from,date_to:to,points,confidence:Math.min(.97,confidence),selected:confidence>=.84,source_line:line});
+  }
+  let seen=new Set();return proposals.filter(p=>{let k=[normText(p.category),p.date_from,p.date_to,p.points].join('|');if(seen.has(k))return false;seen.add(k);return true}).slice(0,80);
+}
+function pointProposalRow(p){
+  return `<tr data-point-proposal="${p.id}" class="${(!p.date_from||!p.date_to||!p.points)?'invalid':''}">
+  <td><input type="checkbox" data-pp-check="${p.id}" ${p.selected?'checked':''}></td>
+  <td><input data-pp-category="${p.id}" value="${esc(p.category)}"><div class="muted mini">${esc(p.source_line.slice(0,120))}</div></td>
+  <td><input data-pp-season="${p.id}" value="${esc(p.season||'')}"></td>
+  <td><input type="date" data-pp-from="${p.id}" value="${esc(p.date_from||'')}"></td>
+  <td><input type="date" data-pp-to="${p.id}" value="${esc(p.date_to||'')}"></td>
+  <td><input type="number" data-pp-points="${p.id}" value="${esc(String(p.points||''))}"></td>
+  <td><span class="confidence ${confidenceClass(p.confidence)}"><i class="confidence-dot"></i>${Math.round(p.confidence*100)}%</span></td></tr>`;
+}
+function pointChartModal(){
+  let proposals=[];
+  modal('Upload Hotel Point Chart',`<div class="formgrid">
+    <div class="field"><label>Resort</label><select name="resort" id="pcResort">${resorts.map(x=>`<option>${x}</option>`).join('')}</select></div>
+    <div class="field"><label>Point Chart Name</label><input name="name" id="pcName" required placeholder="e.g. Loreto 2027 Point Chart"></div>
+    <div class="field"><label>Year</label><input name="year" id="pcYear" type="number" min="2000" max="2100"></div>
+    <div class="field wide"><label>Point Chart Image / PDF</label><input id="pcFile" type="file" accept="image/png,image/jpeg,image/webp,application/pdf" required></div>
+    <div class="field wide"><div class="row"><button type="button" class="btn primary" id="pcOCR">Analyze Point Chart</button><button type="button" class="btn" id="pcAddProposal">+ Manual Proposed Rule</button></div><div id="pcStatus" class="status-line">OCR will propose Point Rules for your review. No rule becomes active until you confirm it.</div></div>
+    <div class="field wide"><label>Extracted Text</label><textarea name="extracted_text" id="pcText" placeholder="OCR text will appear here."></textarea></div>
+    <div class="field wide point-review"><h3 style="margin-top:0">Point Chart Review</h3><div id="pcReview"><div class="empty">Analyze the chart to generate proposed rules.</div></div></div>
+  </div>`,async fd=>{
+    let f=$('#pcFile').files[0];if(!f){alert('Select a point chart image or PDF.');return false}
+    let o={id:uid('pchart'),file_id:uid('file'),created_at:new Date().toISOString()};for(let[k,v]of fd)o[k]=v;
+    await FileStore.put(o.file_id,f);db.point_charts.push(o);
+    let approved=proposals.filter(x=>x.selected&&x.category&&x.date_from&&x.date_to&&n(x.points)>0);
+    approved.forEach(p=>db.point_rules.push({id:uid('prule'),point_chart_id:o.id,resort:o.resort,category:p.category,season:p.season,date_from:p.date_from,date_to:p.date_to,points:n(p.points),notes:'Confirmed from Point Chart Review',created_at:new Date().toISOString()}));
+    save();log('point_chart_create',o.id,`${o.name}; ${approved.length} confirmed rule(s)`);return true
+  });
+
+  function renderPCReview(){
+    if(!proposals.length){$('#pcReview').innerHTML='<div class="empty">No proposed rules yet.</div>';return}
+    $('#pcReview').innerHTML=`<div class="review-summary"><span class="pill">${proposals.length} proposed</span><span class="pill">${proposals.filter(x=>x.selected).length} selected</span></div>
+    <div class="review-toolbar"><button type="button" class="btn" id="pcAcceptHigh">Accept High Confidence</button><button type="button" class="btn" id="pcSelectAll">Select All</button><button type="button" class="btn" id="pcClearAll">Clear</button></div>
+    <div class="tablewrap"><table class="review-table"><thead><tr><th>Use</th><th>Category</th><th>Season</th><th>Date From</th><th>Date To</th><th>Points</th><th>Confidence</th></tr></thead><tbody>${proposals.map(pointProposalRow).join('')}</tbody></table></div>
+    <div class="status-line">Selected, valid rows will become active Point Rules when you click <b>Save</b> in this window.</div>`;
+    $('#pcAcceptHigh').onclick=()=>{proposals.forEach(x=>x.selected=x.confidence>=.88);renderPCReview()};
+    $('#pcSelectAll').onclick=()=>{proposals.forEach(x=>x.selected=true);renderPCReview()};
+    $('#pcClearAll').onclick=()=>{proposals.forEach(x=>x.selected=false);renderPCReview()};
+    document.querySelectorAll('[data-pp-check]').forEach(el=>el.onchange=()=>{let p=proposals.find(x=>x.id===el.dataset.ppCheck);if(p)p.selected=el.checked});
+    document.querySelectorAll('[data-pp-category]').forEach(el=>el.oninput=()=>{let p=proposals.find(x=>x.id===el.dataset.ppCategory);if(p)p.category=el.value});
+    document.querySelectorAll('[data-pp-season]').forEach(el=>el.oninput=()=>{let p=proposals.find(x=>x.id===el.dataset.ppSeason);if(p)p.season=el.value});
+    document.querySelectorAll('[data-pp-from]').forEach(el=>el.onchange=()=>{let p=proposals.find(x=>x.id===el.dataset.ppFrom);if(p)p.date_from=el.value});
+    document.querySelectorAll('[data-pp-to]').forEach(el=>el.onchange=()=>{let p=proposals.find(x=>x.id===el.dataset.ppTo);if(p)p.date_to=el.value});
+    document.querySelectorAll('[data-pp-points]').forEach(el=>el.oninput=()=>{let p=proposals.find(x=>x.id===el.dataset.ppPoints);if(p)p.points=n(el.value)});
+  }
+  $('#pcAddProposal').onclick=()=>{proposals.push({id:uid('pprop'),point_chart_id:'',resort:$('#pcResort').value,category:'',season:'',date_from:'',date_to:'',points:0,confidence:1,selected:true,source_line:'Manual review row'});renderPCReview()};
+  $('#pcOCR').onclick=async()=>{
+    let f=$('#pcFile').files[0];if(!f){$('#pcStatus').textContent='Select a file first.';return}
+    $('#pcStatus').className='status-line';$('#pcStatus').textContent='Reading point chart…';
+    try{
+      let text=await extractFileText(f,p=>$('#pcStatus').textContent=p);$('#pcText').value=text;
+      proposals=parsePointChartProposals(text,$('#pcResort').value,'',$('#pcYear').value);
+      renderPCReview();$('#pcStatus').className='status-line ok';$('#pcStatus').textContent=`Analysis complete. ${proposals.length} proposed rule(s) detected. Review every row before saving.`;
+    }catch(e){$('#pcStatus').className='status-line warn';$('#pcStatus').textContent='OCR error: '+e.message}
+  };
+}
+
+function profile(id){let c=getClient(id);if(!c)return;let ms=sumMetrics(metricsFor(id)),cs=db.campaigns.filter(x=>x.client_id===id),rs=db.reservations.filter(x=>x.client_id===id),used=pointsUsedForClient(id),remaining=n(c.points)-used,docs=db.documents.filter(x=>x.client_id===id);$('#clients').innerHTML=`<div class="row" style="justify-content:space-between;margin-bottom:12px"><button class="btn" id="backClients">← Clients</button><div class="row"><button class="btn" id="editProfile">Edit Client</button><button class="btn primary" id="profileCampaign">+ Add Campaign</button><button class="btn" id="profileBooking">+ Reservation</button><button class="btn" id="profileReport">Generate Report</button></div></div><div class="panel"><div class="reporthead"><div><h2 style="margin:0">${esc(c.name)}</h2><div class="muted">${esc(c.phone||'')} · ${esc(c.email||'')} · ${esc(c.contract||'')}</div><div style="margin-top:8px">${(c.member_levels||[]).map(x=>`<span class="badge">${esc(x)}</span>`).join(' ')}</div></div><div><small class="muted">Total Points</small><strong style="font-size:22px;display:block">${fmt(c.points)}</strong><span class="muted">Used ${fmt(used)} · Available ${fmt(remaining)}</span></div><div><small class="muted">Member Since</small><strong>${esc(c.start_date||'')}</strong></div><div><small class="muted">End Date</small><strong>${esc(c.end_date||'')}</strong></div></div></div><div class="grid"><div class="card"><small>Total Leads</small><strong>${fmt(ms.total_leads)}</strong></div><div class="card"><small>Qualified</small><strong>${fmt(ms.qualified_leads)}</strong></div><div class="card"><small>Hot Leads</small><strong>${fmt(ms.hot_leads)}</strong></div><div class="card"><small>Reservations</small><strong>${rs.length}</strong></div></div><div class="panel" style="margin-top:16px"><h2>Campaigns</h2>${cs.length?cs.map(x=>`<div class="card" style="margin-bottom:8px"><b>${esc(x.name)}</b> · ${esc(x.platform)} · <span class="badge">${esc(x.status)}</span> <span style="float:right"><button class="btn" data-kpi="${x.id}">Add KPI</button> <button class="btn" data-edit-campaign="${x.id}">Edit</button></span></div>`).join(''):'<div class="empty">No campaigns.</div>'}</div><div class="panel"><h2>Reservations</h2>${rs.length?rs.map(r=>`<div class="card" style="margin-bottom:8px">${esc(r.checkin)} — ${esc(r.checkout)} · ${esc(r.resort)} · ${fmt(r.points_used)} pts · ${usd(r.revenue||r.rental_price)} · <span class="badge">${esc(r.status)}</span> <button class="btn" data-edit-reservation="${r.id}" style="float:right">Edit</button></div>`).join(''):'<div class="empty">No reservations.</div>'}</div><div class="panel"><h2>Documents</h2>${docs.length?`<div class="doc-grid">${docs.map(d=>`<div class="doc-card"><b>${esc(d.name)}</b><div class="muted mini">${esc(d.type||'')} · ${esc((d.created_at||'').slice(0,10))}</div><div class="doc-actions"><button class="btn" data-open-file="${esc(d.file_id)}">Open</button></div></div>`).join('')}</div>`:'<div class="empty">No stored reference documents.</div>'}</div>`;$('#backClients').onclick=()=>{renderClientsShell();clients()};$('#editProfile').onclick=()=>clientModal(id);$('#profileCampaign').onclick=()=>campaignModal(id);$('#profileBooking').onclick=()=>bookingModal(id);$('#profileReport').onclick=()=>{renderClientsShell();route('reports');$('#reportClient').value=id;generateReport()}}
+function renderClientsShell(){document.querySelector('#clients').innerHTML=`<div class="row" style="justify-content:space-between;margin-bottom:12px"><div class="row"><input id="clientSearch" placeholder="Search clients" style="padding:9px;border:1px solid var(--line);border-radius:8px"><select id="clientStatusFilter" style="padding:9px;border:1px solid var(--line);border-radius:8px"><option value="">All statuses</option><option>Active</option><option>Inactive</option><option>Paused</option></select></div><button class="btn primary" id="newClientBtn">+ New Client</button></div><div id="clientsTable"></div>`;$('#newClientBtn').onclick=()=>clientModal();$('#clientSearch').oninput=clients;$('#clientStatusFilter').onchange=clients}
+function reportOptions(){let el=$('#reportClient');if(el)el.innerHTML=optionsClients(el.value)} function maskEmail(s){if(!s)return'';let[a,b]=s.split('@');return a.slice(0,2)+'***@'+(b||'')} function maskPhone(s){return s?String(s).replace(/.(?=.{4})/g,'*'):''}
+
+function dateDaysBetween(a,b){
+  if(!a||!b)return 0;let A=new Date(a+'T00:00:00Z'),B=new Date(b+'T00:00:00Z');return Math.max(0,Math.round((B-A)/86400000)+1)
+}
+function shiftDate(date,days){
+  if(!date)return'';let d=new Date(date+'T00:00:00Z');d.setUTCDate(d.getUTCDate()+days);return d.toISOString().slice(0,10)
+}
+function comparisonRange(from,to){
+  let days=dateDaysBetween(from,to);if(!days)return null;return{from:shiftDate(from,-days),to:shiftDate(from,-1)}
+}
+function metricDelta(current,previous,{percentagePoint=false,reverse=false}={}){
+  current=n(current);previous=n(previous);
+  if(previous===0&&current===0)return{value:0,text:'No change',cls:'neutral',arrow:'→'};
+  let raw=percentagePoint?(current-previous):(previous?((current-previous)/Math.abs(previous)*100):(current>0?100:0));
+  let improved=reverse?raw<0:raw>0,declined=reverse?raw>0:raw<0;
+  return{value:raw,text:(raw>0?'+':'')+fmt(raw)+(percentagePoint?' pp':'%'),cls:improved?'good':declined?'bad':'neutral',arrow:raw>0?'↑':raw<0?'↓':'→'};
+}
+function trendHTML(current,previous,opts={}){
+  if(opts.hasPrevious===false)return `<div class="trend neutral">— N/A <span style="font-weight:600;color:var(--muted)">no previous period</span></div>`;
+  let d=metricDelta(current,previous,opts);return `<div class="trend ${d.cls}">${d.arrow} ${esc(d.text)} <span style="font-weight:600;color:var(--muted)">vs previous</span></div>`;
+}
+function reportKpiCard(label,value,current,previous,opts={}){
+  return `<div class="report-kpi"><small>${esc(label)}</small><strong>${value}</strong>${trendHTML(current,previous,opts)}</div>`;
+}
+function seriesPoints(arr,key){
+  return arr.slice().sort((a,b)=>(a.date_from||'').localeCompare(b.date_from||'')).map(x=>({label:(x.date_from||'').slice(5),value:n(x[key])}));
+}
+function engagementPoints(arr){
+  return arr.slice().sort((a,b)=>(a.date_from||'').localeCompare(b.date_from||'')).map(x=>({label:(x.date_from||'').slice(5),value:n(x.emails_sent)+n(x.whatsapp_messages)+n(x.clicks_weeks)}));
+}
+function lineChartSVG(series,series2=null){
+  let width=620,height=230,pad={l:38,r:16,t:18,b:34},all=[...series,...(series2||[])],max=Math.max(1,...all.map(x=>x.value)),min=0;
+  let x=(i,len)=>pad.l+(len<=1?(width-pad.l-pad.r)/2:i*(width-pad.l-pad.r)/(len-1)),y=v=>pad.t+(height-pad.t-pad.b)*(1-(v-min)/(max-min||1));
+  let path=s=>s.map((p,i)=>(i?'L':'M')+x(i,s.length).toFixed(1)+','+y(p.value).toFixed(1)).join(' ');
+  let labels=series.map((p,i)=>`<text x="${x(i,series.length)}" y="${height-10}" text-anchor="middle" font-size="9" fill="#6a7c8f">${esc(p.label)}</text>`).join('');
+  let grid=[0,.25,.5,.75,1].map(q=>{let yy=pad.t+(height-pad.t-pad.b)*q,val=max*(1-q);return `<line x1="${pad.l}" y1="${yy}" x2="${width-pad.r}" y2="${yy}" stroke="#e7edf2" stroke-width="1"/><text x="${pad.l-6}" y="${yy+3}" text-anchor="end" font-size="9" fill="#8090a0">${fmt(val)}</text>`}).join('');
+  let dots=series.map((p,i)=>`<circle cx="${x(i,series.length)}" cy="${y(p.value)}" r="3.2" fill="#0a7471"><title>${p.label}: ${fmt(p.value)}</title></circle>`).join('');
+  let second=series2&&series2.length?`<path d="${path(series2)}" fill="none" stroke="#d19a24" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>${series2.map((p,i)=>`<circle cx="${x(i,series2.length)}" cy="${y(p.value)}" r="2.7" fill="#d19a24"><title>${p.label}: ${fmt(p.value)}</title></circle>`).join('')}`:'';
+  if(!series.length)return'<div class="empty">No historical KPI periods in the selected range.</div>';
+  return `<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="Performance over time">${grid}<path d="${path(series)}" fill="none" stroke="#0a7471" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>${second}${dots}${labels}</svg>`;
+}
+function reportCommercialStatus(m,confirmedReservations){
+  if(confirmedReservations>0)return{label:'COMMERCIAL SUCCESS',cls:'good',text:`${confirmedReservations} confirmed/completed booking${confirmedReservations===1?'':'s'} in the selected period.`};
+  if(n(m.hot_leads)>0)return{label:'ENGAGEMENT SUCCESS / NO COMMERCIAL CONVERSION',cls:'bad',text:'Hot leads are present, but there are no confirmed bookings in the selected period.'};
+  if(n(m.qualified_leads)>0)return{label:'QUALIFIED DEMAND / NO BOOKING',cls:'neutral',text:'Qualified demand exists, but the funnel has not reached confirmed bookings.'};
+  return{label:'EARLY FUNNEL',cls:'neutral',text:'Insufficient downstream activity to evaluate booking conversion.'};
+}
+
+/* ---------- REPORTING ENGINE ---------- */
+function generateReport(){
+  let id=$('#reportClient').value,c=getClient(id);
+  if(!c){$('#clientReport').innerHTML='<div class="empty">Select a client.</div>';return}
+  let from=$('#reportFrom').value,to=$('#reportTo').value;
+  if((from&&!to)||(!from&&to)){ $('#clientReport').innerHTML='<div class="notice">Select both From Date and To Date, or leave both blank for all available data.</div>';return}if(from&&to&&to<from){$('#clientReport').innerHTML='<div class="notice">To Date cannot be earlier than From Date.</div>';return}
+  if(from&&to&&to<from){$('#clientReport').innerHTML='<div class="notice">To Date cannot be earlier than From Date.</div>';return}
+
+  let arr=metricsFor(id,from,to),overlap=metricsOverlap(id,from,to),m=sumMetrics(arr);
+  let excludedPartial=(from&&to)?overlap.filter(x=>!arr.includes(x)):[];
+  let cmpRange=(from&&to)?comparisonRange(from,to):null,prevArr=cmpRange?metricsFor(id,cmpRange.from,cmpRange.to):[],pm=sumMetrics(prevArr),hasPrevious=prevArr.length>0;
+
+  let allReservations=db.reservations.filter(r=>r.client_id===id),rs=allReservations.filter(r=>!from||((r.checkout||r.checkin)>=from&&(r.checkin||r.checkout)<=to));
+  let commercialRows=allReservations.filter(r=>{if(!['Confirmed','Completed'].includes(r.status))return false;let d=r.booking_date||(r.created_at||'').slice(0,10)||r.checkin;return(!from||d>=from)&&(!to||d<=to)}),bookingsCount=commercialRows.length;
+  let grossRevenue=commercialRows.reduce((a,r)=>a+n(r.revenue||r.rental_price),0);
+  let netRevenue=commercialRows.reduce((a,r)=>a+(n(r.net_revenue)||Math.max(0,n(r.revenue||r.rental_price)-n(r.commission))),0);
+  let selectedCampaignIds=new Set(arr.map(x=>x.campaign_id));let campaignRows=db.campaigns.filter(x=>x.client_id===id&&(!from||selectedCampaignIds.has(x.id)||(x.start_date&&x.end_date&&x.start_date>=from&&x.end_date<=to)));
+  let adSpend=n(m.ad_spend)||campaignRows.reduce((a,x)=>a+n(x.ad_spend),0),cac=bookingsCount?adSpend/bookingsCount:0,roas=adSpend?grossRevenue/adSpend:0;
+
+  let used=pointsUsedForClient(id),remaining=num(c.points)-used,max=Math.max(1,m.total_leads),commercial=reportCommercialStatus(m,bookingsCount);
+  let leadsSeries=seriesPoints(arr,'total_leads'),qualifiedSeries=seriesPoints(arr,'qualified_leads'),engagementSeries=engagementPoints(arr);
+  const opts=o=>Object.assign({hasPrevious},o||{});
+  let kpis=[
+    reportKpiCard('Total Leads',fmt(m.total_leads),m.total_leads,pm.total_leads,opts()),
+    reportKpiCard('Warm Leads',fmt(m.warm_leads),m.warm_leads,pm.warm_leads,opts()),
+    reportKpiCard('Qualified Leads',fmt(m.qualified_leads),m.qualified_leads,pm.qualified_leads,opts()),
+    reportKpiCard('Hot Leads',fmt(m.hot_leads),m.hot_leads,pm.hot_leads,opts()),
+    reportKpiCard('Interest Rate',fmt(m.interest_rate)+'%',m.interest_rate,pm.interest_rate,opts({percentagePoint:true})),
+    reportKpiCard('Abandoned Carts',fmt(m.abandoned_carts),m.abandoned_carts,pm.abandoned_carts,opts({reverse:true})),
+    reportKpiCard('Active Follow-ups',fmt(m.active_followups),m.active_followups,pm.active_followups,opts()),
+    reportKpiCard('Emails Sent',fmt(m.emails_sent),m.emails_sent,pm.emails_sent,opts()),
+    reportKpiCard('WhatsApp Messages',fmt(m.whatsapp_messages),m.whatsapp_messages,pm.whatsapp_messages,opts()),
+    reportKpiCard('Clicks on Weeks',fmt(m.clicks_weeks),m.clicks_weeks,pm.clicks_weeks,opts()),
+    reportKpiCard('Response Rate',fmt(m.response_rate)+'%',m.response_rate,pm.response_rate,opts({percentagePoint:true})),
+    reportKpiCard('Avg. Response Time',fmt(m.avg_response_time)+' min',m.avg_response_time,pm.avg_response_time,opts({reverse:true})),
+    reportKpiCard('New Leads',fmt(m.new_leads),m.new_leads,pm.new_leads,opts()),
+    reportKpiCard('Returning Visitors',fmt(m.returning_visitors),m.returning_visitors,pm.returning_visitors,opts()),
+    reportKpiCard('Lead Quality Score',fmt(m.lead_quality_score),m.lead_quality_score,pm.lead_quality_score,opts())
+  ].join('');
+  let periodText=from&&to?`${from} — ${to}`:'All available data';
+  let comparisonText=hasPrevious?`Comparison: ${cmpRange.from} — ${cmpRange.to}`:'No complete previous comparison period is available.';
+  let partialNote=excludedPartial.length?`${excludedPartial.length} KPI period(s) overlap the selected dates but were excluded because they are aggregate periods that extend outside the range. The CRM does not prorate aggregate KPI data.`:'';
+
+  $('#clientReport').innerHTML=`<div class="report-dashboard">
+    <div class="report-hero"><div class="report-hero-grid">
+      <div><h2 style="margin:0 0 4px">Client Dashboard - Travel Mexico</h2><h3 style="margin:6px 0">${esc(c.name)}</h3><div class="muted">${esc(maskPhone(c.phone))} · ${esc(maskEmail(c.email))} · ${esc(c.contract||'')}<br>${esc((c.member_levels||[]).join(', '))} · ${esc(c.enrollment_fee||'')} · Member since ${esc(c.start_date||'')} · ${esc(c.status||'')}</div><div style="margin-top:10px">${(c.resorts||[]).map(x=>`<span class="badge" style="background:rgba(255,255,255,.15);color:#fff">${esc(x)}</span>`).join(' ')}</div></div>
+      <div class="report-hero-stat"><small>Available Points</small><strong>${fmt(remaining)}</strong><div class="muted">${fmt(c.points)} total · ${fmt(used)} used</div></div>
+      <div class="report-hero-stat"><small>Period</small><strong style="font-size:15px">${esc(periodText)}</strong><div class="muted">${arr.length} complete KPI period${arr.length===1?'':'s'}</div></div>
+      <div class="report-hero-stat"><small>Bookings</small><strong>${bookingsCount}</strong><div class="muted">Confirmed + Completed</div></div>
+    </div></div>
+
+    <div class="comparison-note"><b>${esc(commercial.label)}</b> — ${esc(commercial.text)}<br><span class="muted">${esc(comparisonText)}</span>${partialNote?`<br><span style="color:#8a5b00">${esc(partialNote)}</span>`:''}</div>
+
+    <div class="commercial-strip">
+      <div class="card"><small>Gross Rental Revenue</small><strong>${usd(grossRevenue)}</strong></div>
+      <div class="card"><small>Net Revenue</small><strong>${usd(netRevenue)}</strong></div>
+      <div class="card"><small>Cost per Booking</small><strong>${bookingsCount?usd(cac):'—'}</strong></div>
+      <div class="card"><small>ROAS</small><strong>${adSpend?fmt(roas)+'x':'—'}</strong><div class="muted">${usd(adSpend)} ad spend</div></div>
+    </div>
+    <div class="commercial-strip">
+      <div class="card"><small>CPL</small><strong>${m.total_leads&&adSpend?usd(adSpend/m.total_leads):'—'}</strong></div>
+      <div class="card"><small>Cost / Qualified Lead</small><strong>${m.qualified_leads&&adSpend?usd(adSpend/m.qualified_leads):'—'}</strong></div>
+      <div class="card"><small>Cost / Hot Lead</small><strong>${m.hot_leads&&adSpend?usd(adSpend/m.hot_leads):'—'}</strong></div>
+      <div class="card"><small>Ad Spend</small><strong>${usd(adSpend)}</strong><div class="muted">${m.ad_spend?'KPI-period spend':'campaign-level fallback'}</div></div>
+    </div>
+
+    <div class="report-kpi-grid">${kpis}</div>
+
+    <div class="chart-grid">
+      <div class="chart-card"><h3>Leads Over Time</h3><div class="muted">Total Leads vs Qualified Leads by complete stored KPI period</div>${lineChartSVG(leadsSeries,qualifiedSeries)}<div class="chart-legend"><span class="legend-key"><i class="legend-swatch"></i>Total Leads</span><span class="legend-key"><i class="legend-swatch alt"></i>Qualified Leads</span></div></div>
+      <div class="chart-card"><h3>Engagement Over Time</h3><div class="muted">Emails + WhatsApp Messages + Clicks on Weeks</div>${lineChartSVG(engagementSeries)}<div class="chart-legend"><span class="legend-key"><i class="legend-swatch"></i>Total Engagement</span></div></div>
+    </div>
+
+    <div class="chart-grid">
+      <div class="chart-card"><div class="report-section-title"><h2>Lead Funnel</h2><span class="muted">Selected period</span></div><div class="funnel-modern">
+        ${[['Total Leads',m.total_leads],['Warm',m.warm_leads],['Qualified',m.qualified_leads],['Hot',m.hot_leads]].map(x=>`<div class="funnel-modern-row"><b>${x[0]}</b><div class="funnel-modern-track"><div class="funnel-modern-fill" style="width:${Math.min(100,n(x[1])/max*100)}%"></div></div><span>${fmt(x[1])}</span></div>`).join('')}
+      </div></div>
+      <div class="chart-card"><div class="report-section-title"><h2>Performance KPIs</h2></div>
+        <div class="commercial-strip">
+          <div class="card"><small>Lead-to-Qualified %</small><strong>${fmt(m.lead_to_qualified)}%</strong>${trendHTML(m.lead_to_qualified,pm.lead_to_qualified,opts({percentagePoint:true}))}</div>
+          <div class="card"><small>Cart Abandonment Rate</small><strong>${fmt(m.cart_abandonment)}%</strong>${trendHTML(m.cart_abandonment,pm.cart_abandonment,opts({percentagePoint:true,reverse:true}))}</div>
+          <div class="card"><small>Repeat Visitor Rate</small><strong>${fmt(m.repeat_rate)}%</strong>${trendHTML(m.repeat_rate,pm.repeat_rate,opts({percentagePoint:true}))}</div>
+          <div class="card"><small>Average Pages Viewed</small><strong>${fmt(m.avg_pages)}</strong>${trendHTML(m.avg_pages,pm.avg_pages,opts())}</div>
+        </div>
+        <div class="commercial-strip" style="margin-top:10px">
+          <div class="card"><small>Leads from Ads</small><strong>${fmt(m.leads_ads)}</strong>${trendHTML(m.leads_ads,pm.leads_ads,opts())}</div>
+          <div class="card"><small>Organic Leads</small><strong>${fmt(m.organic_leads)}</strong>${trendHTML(m.organic_leads,pm.organic_leads,opts())}</div>
+          <div class="card"><small>Lead Quality Score</small><strong>${fmt(m.lead_quality_score)}</strong>${trendHTML(m.lead_quality_score,pm.lead_quality_score,opts())}</div>
+          <div class="card"><small>Bookings</small><strong>${bookingsCount}</strong><div class="trend ${bookingsCount?'good':'neutral'}">${bookingsCount?'↑':'→'} ${bookingsCount?'Commercial conversion':'No confirmed/completed rental'}</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel"><div class="report-section-title"><h2>Reservations & Points</h2><div><b>${fmt(used)}</b> used · <b>${fmt(remaining)}</b> available</div></div>
+      ${rs.length?`<div class="tablewrap"><div class="booking-row" style="font-weight:900;background:#f7fafc"><span>Resort / Category</span><span>Check-in</span><span>Check-out</span><span>Status</span><span>Points / Revenue</span></div>${rs.map(r=>`<div class="booking-row"><span><b>${esc(r.resort)}</b><br><span class="muted">${esc(r.category||'')}</span></span><span>${esc(r.checkin||'')}</span><span>${esc(r.checkout||'')}</span><span><span class="badge">${esc(r.status)}</span></span><span><b>${fmt(r.points_used)} pts</b><br><span class="muted">${usd(r.revenue||r.rental_price)}</span></span></div>`).join('')}</div>`:'<div class="empty">No reservations in selected period.</div>'}
+    </div>
+  </div>`;
+}
+
+/* ---------- IMPORT / OCR ENGINE ---------- */
+let importFiles=[];
+let importReview={candidates:[],rawText:'',tables:[],sourceNames:[],reservationRows:[],reservationHeaders:[],reservationMapping:{}};
+
+function setImportFiles(files,append=true){
+  let arr=[...files];if(!append)importFiles=[];
+  let keys=new Set(importFiles.map(f=>f.name+'|'+f.size+'|'+f.lastModified));
+  arr.forEach((f,i)=>{let file=f;if((!f.name||f.name==='image.png')&&f.type?.startsWith('image/')){let ext=(f.type.split('/')[1]||'png').replace('jpeg','jpg');file=new File([f],`Pasted Screenshot ${Date.now()}_${i+1}.${ext}`,{type:f.type,lastModified:Date.now()})}let k=file.name+'|'+file.size+'|'+file.lastModified;if(!keys.has(k)){importFiles.push(file);keys.add(k)}});
+  renderImportFiles();
+}
+function renderImportFiles(){
+  $('#importFileList').innerHTML=importFiles.map(f=>`<div class="file-row"><span><b>${esc(f.name)}</b><br><span class="muted">${esc(f.type||'file')} · ${Math.round(f.size/1024)} KB</span></span><span class="pill">${/image/i.test(f.type)?'OCR':/pdf/i.test(f.type)?'PDF':/sheet|excel|csv/i.test((f.type||'')+f.name)?'TABLE':'DOC'}</span></div>`).join('');
+}
+async function ocrImage(source,progress){
+  if(!window.Tesseract)throw new Error('OCR library did not load. Internet connection is required.');
+  let r=await Tesseract.recognize(source,'eng',{logger:m=>{if(m.status==='recognizing text'&&m.progress!=null){$('#importProgress').style.width=Math.round(m.progress*100)+'%';if(progress)progress('OCR '+Math.round(m.progress*100)+'%')}}});
+  return r.data.text||'';
+}
+
+async function ocrReservationImage(source,progress){
+  if(!window.Tesseract)throw new Error('OCR library did not load. Internet connection is required.');
+  let r=await Tesseract.recognize(
+    source,
+    'eng+spa',
+    {logger:m=>{
+      if(m.status==='recognizing text'&&m.progress!=null){
+        $('#importProgress').style.width=Math.round(m.progress*100)+'%';
+        if(progress)progress('OCR '+Math.round(m.progress*100)+'%')
+      }
+    }},
+    {tessedit_create_tsv:'1'}
+  );
+  return {text:r.data.text||'',tsv:r.data.tsv||''};
+}
+
+function reservationRowsFromTsv(tsv,sourceName='Screenshot'){
+  if(!tsv||!String(tsv).trim())return[];
+  let lines=String(tsv).trim().split(/\r?\n/),words=[];
+  for(let i=1;i<lines.length;i++){
+    let p=lines[i].split('\t');
+    if(p.length<12)continue;
+    let text=p.slice(11).join('\t').trim();
+    if(!text)continue;
+    let left=Number(p[6]),top=Number(p[7]),width=Number(p[8]),height=Number(p[9]),conf=Number(p[10]);
+    if(!Number.isFinite(left)||!Number.isFinite(top)||!Number.isFinite(width)||!Number.isFinite(height))continue;
+    words.push({text,left,top,width,height,right:left+width,cx:left+width/2,cy:top+height/2,conf});
+  }
+  if(words.length<10)return[];
+
+  let pageWidth=Math.max(...words.map(w=>w.right),1);
+  let pageHeight=Math.max(...words.map(w=>w.top+w.height),1);
+
+  // Ignore spreadsheet column letters and detect the actual header row.
+  let headerWords=words.filter(w=>w.top<pageHeight*.22);
+  let memberHeader=headerWords.find(w=>normText(w.text)==='member');
+  let hotelHeader=headerWords.find(w=>normText(w.text)==='hotel');
+  let roomHeader=headerWords.find(w=>['room','type'].includes(normText(w.text)));
+  let confHeader=headerWords.find(w=>normText(w.text).startsWith('conf'));
+  let checkHeaders=headerWords.filter(w=>normText(w.text)==='check');
+
+  let headerBottom=Math.max(
+    0,
+    ...headerWords.filter(w=>
+      /conf|number|room|type|hotel|check|dias|member/i.test(normText(w.text))
+    ).map(w=>w.top+w.height)
+  );
+  if(!headerBottom)headerBottom=pageHeight*.12;
+
+  // Prefer detected header x positions; fallback to the known Travel Mexico Excel layout.
+  let xConf=confHeader?.cx ?? pageWidth*.055;
+  let xRoom=roomHeader?.cx ?? pageWidth*.145;
+  let xHotel=hotelHeader?.cx ?? pageWidth*.295;
+  let xCheckIn=(checkHeaders[0]?.cx) ?? pageWidth*.50;
+  let xCheckOut=(checkHeaders.length>1?checkHeaders[checkHeaders.length-1].cx:null) ?? pageWidth*.765;
+  let xMember=memberHeader?.cx ?? pageWidth*.94;
+
+  let centers=[xConf,xRoom,xHotel,xCheckIn,xCheckOut,xMember].sort((a,b)=>a-b);
+  let bounds=[0];
+  for(let i=0;i<centers.length-1;i++)bounds.push((centers[i]+centers[i+1])/2);
+  bounds.push(pageWidth+1);
+
+  function colFor(cx){
+    // Fixed semantic order after sorting: conf, room, hotel, check-in, check-out, member
+    for(let i=0;i<bounds.length-1;i++)if(cx>=bounds[i]&&cx<bounds[i+1])return i;
+    return -1;
+  }
+
+  let body=words.filter(w=>w.top>headerBottom+2);
+  if(!body.length)return[];
+
+  // Cluster OCR words into visual spreadsheet rows by vertical center.
+  let avgH=body.reduce((a,w)=>a+w.height,0)/body.length;
+  let tolerance=Math.max(8,avgH*.8);
+  body.sort((a,b)=>a.cy-b.cy||a.left-b.left);
+  let visualRows=[];
+  for(let w of body){
+    let row=visualRows.find(r=>Math.abs(r.cy-w.cy)<=tolerance);
+    if(!row){row={cy:w.cy,words:[]};visualRows.push(row)}
+    row.words.push(w);
+    row.cy=(row.cy*(row.words.length-1)+w.cy)/row.words.length;
+  }
+  visualRows.sort((a,b)=>a.cy-b.cy);
+
+  let out=[];
+  for(let vr of visualRows){
+    let cols=[[],[],[],[],[],[]];
+    vr.words.sort((a,b)=>a.left-b.left).forEach(w=>{
+      let c=colFor(w.cx);
+      if(c>=0&&c<6)cols[c].push(w);
+    });
+    let values=cols.map(c=>c.sort((a,b)=>a.left-b.left).map(w=>w.text).join(' ').replace(/\s+/g,' ').trim());
+
+    let reservationCode=(values[0].match(/\b[0-9A-Z]{5,10}\b/i)||[])[0]||'';
+    let category=displayRoomCategory(values[1]);
+    let resort=normalizeResortName(values[2]);
+    let checkin=normalizeExcelDate(values[3]);
+    let checkout=normalizeExcelDate(values[4]);
+    let member=values[5].trim();
+
+    // Reject non-data rows / fragments.
+    let hasCore=[reservationCode,resort,checkin,checkout,member].filter(Boolean).length;
+    if(hasCore<3)continue;
+    if(!reservationCode && !checkin && !checkout)continue;
+
+    let r={
+      id:uid('rimport'),
+      selected:true,
+      source:sourceName,
+      row_number:out.length+2,
+      member_name:member,
+      reservation_code:reservationCode||`IMG-${Date.now().toString().slice(-6)}-${out.length+1}`,
+      resort,
+      category,
+      unit_type:'',
+      checkin,
+      checkout,
+      booking_date:'',
+      status:'Reserved',
+      points_used:0,
+      points_source:'Not found',
+      notes:'Imported from OCR screenshot table',
+      errors:[],
+      warnings:[]
+    };
+    recalcReservationRow(r);
+    if(r.duplicate_id)r.selected=false;
+    out.push(r);
+  }
+
+  // Remove accidental duplicate OCR rows.
+  let seen=new Set();
+  return out.filter(r=>{
+    let key=[normText(r.reservation_code),r.checkin,r.checkout,normText(r.member_name)].join('|');
+    if(seen.has(key))return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+async function extractPdfText(file,progress){
+  if(!window.pdfjsLib)throw new Error('PDF library did not load.');
+  pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+  let pdf=await pdfjsLib.getDocument({data:new Uint8Array(await file.arrayBuffer())}).promise,out='';
+  for(let p=1;p<=Math.min(pdf.numPages,15);p++){
+    if(progress)progress(`Reading PDF page ${p}/${Math.min(pdf.numPages,15)}…`);
+    let page=await pdf.getPage(p),tc=await page.getTextContent(),txt=tc.items.map(x=>x.str).join(' ');
+    if(txt.trim().length>40)out+='\n'+txt;
+    else{let vp=page.getViewport({scale:1.7}),cv=document.createElement('canvas');cv.width=vp.width;cv.height=vp.height;await page.render({canvasContext:cv.getContext('2d'),viewport:vp}).promise;out+='\n'+await ocrImage(cv,progress)}
+  }return out;
+}
+async function extractFileText(file,progress){
+  let name=file.name.toLowerCase();
+  if(file.type.startsWith('image/'))return await ocrImage(file,progress);
+  if(file.type==='application/pdf'||name.endsWith('.pdf'))return await extractPdfText(file,progress);
+  if(/\.(xlsx|xls)$/i.test(name)){
+    if(!window.XLSX)throw new Error('XLSX library did not load.');
+    let wb=XLSX.read(await file.arrayBuffer(),{type:'array'}),out='';
+    wb.SheetNames.forEach(sn=>{out+=`\n[Sheet: ${sn}]\n`+XLSX.utils.sheet_to_csv(wb.Sheets[sn])});return out;
+  }
+  return await file.text();
+}
+
+const importFieldCatalog=[
+  {field:'name',label:'Member Name',scope:'client',type:'text',aliases:['member name','client name','customer name','primary member','name']},
+  {field:'contract',label:'Contract',scope:'client',type:'text',aliases:['contract','contract number','member id','membership id']},
+  {field:'phone',label:'Phone',scope:'client',type:'text',aliases:['phone','contact phone','phone number']},
+  {field:'email',label:'Email',scope:'client',type:'text',aliases:['email','linked email','email address']},
+  {field:'points',label:'Total Points',scope:'client',type:'number',aliases:['total points','points','annual points']},
+  {field:'enrollment_fee',label:'Enrollment Fee',scope:'client',type:'text',aliases:['enrollment fee','enrollment']},
+  {field:'client_type',label:'Client Type',scope:'client',type:'text',aliases:['client type','customer type']},
+  {field:'client_level',label:'Client Level',scope:'client',type:'text',aliases:['client level']},
+  {field:'member_levels',label:'Member Level',scope:'client',type:'multi',aliases:['member level','membership level','membership tier']},
+  {field:'resorts',label:'Primary Resort',scope:'client',type:'multi',aliases:['primary resort','resort','resorts','destination']},
+  {field:'start_date',label:'Start Date',scope:'client',type:'date',aliases:['start date','member since','membership start']},
+  {field:'end_date',label:'End Date',scope:'client',type:'date',aliases:['end date','expiration date','membership end']},
+  {field:'ad_spend',label:'Ad Spend',scope:'kpi',type:'number',aliases:['ad spend','marketing spend','media spend','advertising spend']},
+  {field:'total_leads',label:'Total Leads',scope:'kpi',type:'number',aliases:['total leads','leads']},
+  {field:'warm_leads',label:'Warm Leads',scope:'kpi',type:'number',aliases:['warm leads','warm']},
+  {field:'qualified_leads',label:'Qualified Leads',scope:'kpi',type:'number',aliases:['qualified leads','qualified']},
+  {field:'hot_leads',label:'Hot Leads',scope:'kpi',type:'number',aliases:['hot leads','hot']},
+  {field:'interest_rate',label:'Interest Rate %',scope:'kpi',type:'number',aliases:['interest rate']},
+  {field:'abandoned_carts',label:'Abandoned Carts',scope:'kpi',type:'number',aliases:['abandoned carts','cart abandonment']},
+  {field:'active_followups',label:'Active Follow-ups',scope:'kpi',type:'number',aliases:['active follow ups','active follow-ups','follow ups','follow-ups']},
+  {field:'emails_sent',label:'Emails Sent',scope:'kpi',type:'number',aliases:['emails sent','email sent']},
+  {field:'whatsapp_messages',label:'WhatsApp Messages',scope:'kpi',type:'number',aliases:['whatsapp messages','whatsapp']},
+  {field:'clicks_weeks',label:'Clicks on Weeks',scope:'kpi',type:'number',aliases:['clicks on weeks','week clicks']},
+  {field:'response_rate',label:'Response Rate %',scope:'kpi',type:'number',aliases:['response rate']},
+  {field:'avg_response_time',label:'Average Response Time',scope:'kpi',type:'number',aliases:['average response time','avg response time']},
+  {field:'new_leads',label:'New Leads',scope:'kpi',type:'number',aliases:['new leads']},
+  {field:'returning_visitors',label:'Returning Visitors',scope:'kpi',type:'number',aliases:['returning visitors','repeat visitors']},
+  {field:'leads_ads',label:'Leads from Ads',scope:'kpi',type:'number',aliases:['leads from ads','paid leads']},
+  {field:'organic_leads',label:'Organic Leads',scope:'kpi',type:'number',aliases:['organic leads']},
+  {field:'avg_pages',label:'Average Pages Viewed',scope:'kpi',type:'number',aliases:['average pages viewed','avg pages viewed','pages viewed']},
+  {field:'lead_quality_score',label:'Lead Quality Score',scope:'kpi',type:'number',aliases:['lead quality score','quality score']}
+];
+
+function normalizeImportValue(field,value){
+  let def=importFieldCatalog.find(x=>x.field===field),v=String(value??'').trim();
+  if(!def)return v;
+  if(def.type==='number'){let z=v.replace(/[$,%]/g,'').replace(/,/g,'').match(/-?\d+(?:\.\d+)?/);return z?Number(z[0]):v}
+  if(def.type==='multi'){return v.split(/\||,|;|\n/).map(x=>x.trim()).filter(Boolean).join(' | ')}
+  return v;
+}
+function aliasScore(label,def){
+  let a=normText(label),best=0;
+  for(let x of def.aliases){let b=normText(x);if(a===b)best=Math.max(best,0.99);else if(a.startsWith(b)||a.endsWith(b))best=Math.max(best,0.93);else if(a.includes(b)||b.includes(a))best=Math.max(best,0.84);else{let aw=new Set(a.split(' ')),bw=b.split(' '),hit=bw.filter(w=>aw.has(w)).length;if(hit&&hit/bw.length>=.7)best=Math.max(best,0.72)}}
+  return best;
+}
+function bestImportField(label){
+  let results=importFieldCatalog.map(d=>({def:d,score:aliasScore(label,d)})).sort((a,b)=>b.score-a.score);
+  return results[0]&&results[0].score>=.55?results[0]:null;
+}
+function addImportCandidate(cands,sourceLabel,value,source='text',confidenceBonus=0){
+  let match=bestImportField(sourceLabel);if(!match)return;
+  let normalized=normalizeImportValue(match.def.field,value);
+  if(normalized===''||normalized==null)return;
+  let conf=Math.min(.99,match.score+confidenceBonus);
+  let dup=cands.find(x=>x.field===match.def.field&&String(x.value)===String(normalized));
+  if(!dup)cands.push({id:uid('candidate'),source_label:sourceLabel,field:match.def.field,scope:match.def.scope,value:normalized,confidence:conf,source,selected:conf>=.80});
+}
+function extractKeyValueCandidates(txt,source='text'){
+  let cands=[],lines=String(txt||'').replace(/\r/g,'\n').split(/\n+/).map(x=>x.trim()).filter(Boolean);
+  for(let line of lines){
+    let m=line.match(/^(.{2,70}?)\s*[:=\t]\s*(.+)$/);
+    if(m){addImportCandidate(cands,m[1].trim(),m[2].trim(),source,.03);continue}
+    for(let def of importFieldCatalog){
+      for(let al of def.aliases){
+        let rx=new RegExp('(?:^|\\b)'+al.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\s*[:\\-]?\\s*([$]?[0-9][0-9,.]*%?|[^|]{2,80})','i');
+        let q=line.match(rx);if(q){addImportCandidate(cands,al,q[1].trim(),source,0);break}
+      }
+    }
+  }
+  return cands;
+}
+function parseSpreadsheetCandidates(fileText,source){
+  let cands=[],lines=String(fileText||'').split(/\n/).filter(x=>x.trim()&&!x.startsWith('[Sheet:'));
+  if(lines.length<2)return cands;
+  let parseRow=line=>line.split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).map(x=>x.replace(/^"|"$/g,'').trim());
+  let headers=parseRow(lines[0]),values=parseRow(lines[1]);
+  headers.forEach((h,i)=>{if(values[i]!=null)addImportCandidate(cands,h,values[i],source,.05)});
+  return cands;
+}
+function confidenceClass(v){return v>=.9?'high':v>=.75?'medium':'low'}
+function importTargetOptions(current){
+  return '<option value="">Ignore</option>'+importFieldCatalog.map(d=>`<option value="${d.field}" ${d.field===current?'selected':''}>${esc(d.label)} — ${d.scope==='client'?'Client':'KPI'}</option>`).join('');
+}
+function renderImportReview(){
+  let c=importReview.candidates;
+  if(!c.length){$('#importReviewCenter').innerHTML='<div class="empty">No supported CRM fields were detected. You can still save the files as reference documents.</div>';return}
+  let high=c.filter(x=>x.confidence>=.9).length,med=c.filter(x=>x.confidence>=.75&&x.confidence<.9).length,low=c.filter(x=>x.confidence<.75).length;
+  $('#importReviewCenter').innerHTML=`<div class="review-summary"><span class="pill">${c.length} detected</span><span class="pill">${high} high confidence</span><span class="pill">${med} medium</span><span class="pill">${low} review needed</span></div>
+  <div class="review-toolbar"><button class="btn" id="acceptHighConfidence">Accept All High Confidence</button><button class="btn" id="selectAllCandidates">Select All</button><button class="btn" id="clearCandidateSelection">Clear Selection</button></div>
+  <div class="tablewrap"><table class="review-table"><thead><tr><th>Use</th><th>Source</th><th>CRM Field</th><th>Detected Value</th><th>Confidence</th></tr></thead><tbody>
+  ${c.map(x=>`<tr data-candidate="${x.id}"><td><input type="checkbox" data-candidate-check="${x.id}" ${x.selected?'checked':''}></td><td><b>${esc(x.source_label)}</b><div class="muted">${esc(x.source)}</div></td><td><select data-candidate-field="${x.id}">${importTargetOptions(x.field)}</select><div class="scope-tag">${esc(x.scope)}</div></td><td><input data-candidate-value="${x.id}" value="${esc(String(x.value))}"></td><td><span class="confidence ${confidenceClass(x.confidence)}"><i class="confidence-dot"></i>${Math.round(x.confidence*100)}%</span></td></tr>`).join('')}
+  </tbody></table></div>
+  <div class="review-actions"><button class="btn primary" id="confirmImport">Confirm Import</button><span class="muted">Only checked rows will be written to the CRM.</span></div>`;
+  $('#acceptHighConfidence').onclick=()=>{c.forEach(x=>x.selected=x.confidence>=.9);renderImportReview()};
+  $('#selectAllCandidates').onclick=()=>{c.forEach(x=>x.selected=true);renderImportReview()};
+  $('#clearCandidateSelection').onclick=()=>{c.forEach(x=>x.selected=false);renderImportReview()};
+  document.querySelectorAll('[data-candidate-check]').forEach(el=>el.onchange=()=>{let x=c.find(q=>q.id===el.dataset.candidateCheck);if(x)x.selected=el.checked});
+  document.querySelectorAll('[data-candidate-field]').forEach(el=>el.onchange=()=>{let x=c.find(q=>q.id===el.dataset.candidateField);if(x){x.field=el.value;let d=importFieldCatalog.find(q=>q.field===x.field);x.scope=d?.scope||''}});
+  document.querySelectorAll('[data-candidate-value]').forEach(el=>el.oninput=()=>{let x=c.find(q=>q.id===el.dataset.candidateValue);if(x)x.value=el.value});
+  $('#confirmImport').onclick=confirmReviewedImport;
+}
+
+const reservationFieldCatalog=[
+  {field:'member_name',label:'Member',aliases:['member','member name','client','client name','primary member']},
+  {field:'reservation_code',label:'Reservation ID',aliases:['reservation id','reservation','confirmation','confirmation number','confirmation #','conf number','conf. number','conf no','conf. no','booking id','booking number','reservation number','reservation #','id']},
+  {field:'resort',label:'Resort',aliases:['resort','hotel','property','destination']},
+  {field:'category',label:'Category',aliases:['category','room category','room type','roomtype','accommodation','suite category']},
+  {field:'unit_type',label:'Unit Type',aliases:['unit type','unit','villa type']},
+  {field:'checkin',label:'Check-in',aliases:['check in','check-in','checkin','arrival','arrival date','start date']},
+  {field:'checkout',label:'Check-out',aliases:['check out','check-out','checkout','departure','departure date','end date']},
+  {field:'days_to_checkin',label:'Days to Check-in',aliases:['days to check in','days to check-in','days until check in','days until check-in','dias para check in','días para check in','dias para check-in','días para check-in']},
+  {field:'booking_date',label:'Booking Date',aliases:['booking date','reserved date','reservation date','date booked']},
+  {field:'status',label:'Status',aliases:['status','reservation status','booking status']},
+  {field:'points_used',label:'Points Used',aliases:['points used','points','point cost','points cost','total points']},
+  {field:'revenue',label:'Gross Revenue',aliases:['revenue','gross revenue','rental price','rental revenue','amount','price']},
+  {field:'commission',label:'Commission',aliases:['commission','commission amount']},
+  {field:'net_revenue',label:'Net Revenue',aliases:['net revenue','net amount']},
+  {field:'guests',label:'Guests / Party Size',aliases:['guests','guest count','number of guests','party size','occupancy','pax']},
+  {field:'booking_source',label:'Booking Source',aliases:['booking source','source','channel']},
+  {field:'notes',label:'Notes',aliases:['notes','comments','comment','remarks']}
+];
+function reservationAliasScore(header,def){
+  let a=normText(header),best=0;
+  for(let al of def.aliases){let b=normText(al);if(a===b)best=Math.max(best,.99);else if(a.startsWith(b)||a.endsWith(b))best=Math.max(best,.92);else if(a.includes(b)||b.includes(a))best=Math.max(best,.82)}
+  return best;
+}
+function bestReservationField(header){
+  let all=reservationFieldCatalog.map(d=>({def:d,score:reservationAliasScore(header,d)})).sort((a,b)=>b.score-a.score);
+  return all[0]&&all[0].score>=.55?all[0]:null;
+}
+function reservationDatePreference(){return $('#importDateFormat')?.value||'auto'}
+function isAmbiguousNumericDate(v){
+  let s=String(v||'').trim(),m=s.match(/^(\d{1,2})[\/.-](\d{1,2})[\/.-](\d{2,4})$/);return !!(m&&Number(m[1])<=12&&Number(m[2])<=12);
+}
+function normalizeExcelDate(v,pref='auto'){
+  if(v==null||v==='')return'';
+  if(typeof v==='number'&&v>20000&&v<80000){let d=new Date(Date.UTC(1899,11,30)+Math.round(v)*86400000);return d.toISOString().slice(0,10)}
+  let s=String(v).trim();if(/^\d{4}-\d{2}-\d{2}$/.test(s))return s;
+
+  const months={enero:1,febrero:2,marzo:3,abril:4,mayo:5,junio:6,julio:7,agosto:8,septiembre:9,setiembre:9,octubre:10,noviembre:11,diciembre:12,
+    january:1,february:2,march:3,april:4,may:5,june:6,july:7,august:8,september:9,october:10,november:11,december:12,
+    jan:1,feb:2,mar:3,apr:4,jun:6,jul:7,aug:8,sep:9,sept:9,oct:10,nov:11,dec:12};
+  let normalized=s.toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/^(lunes|martes|miercoles|jueves|viernes|sabado|domingo|monday|tuesday|wednesday|thursday|friday|saturday|sunday)\s*,?\s*/,'')
+    .replace(/\s+/g,' ').trim();
+
+  let sm=normalized.match(/(\d{1,2})\s+de\s+([a-z]+)\s+de\s+(\d{4})/i);
+  if(sm){let day=Number(sm[1]),month=months[sm[2]],year=Number(sm[3]);if(month)return`${year}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}`}
+  sm=normalized.match(/([a-z]+)\s+(\d{1,2})(?:,)?\s+(\d{4})/i);
+  if(sm){let month=months[sm[1]],day=Number(sm[2]),year=Number(sm[3]);if(month)return`${year}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}`}
+
+  let m=s.match(/^(\d{1,2})[\/.-](\d{1,2})[\/.-](\d{2,4})$/);
+  if(m){let a=Number(m[1]),b=Number(m[2]),y=Number(m[3]);if(y<100)y+=2000;let month,day;if(pref==='dmy'){day=a;month=b}else if(pref==='mdy'){month=a;day=b}else if(a>12){day=a;month=b}else{month=a;day=b}if(month<1||month>12||day<1||day>31)return'';return `${y}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}`}
+  let d=new Date(s);if(isNaN(d))return'';return new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())).toISOString().slice(0,10);
+}
+
+function daysToCheckin(checkin){
+  if(!checkin)return null;
+  let d=new Date(checkin+'T00:00:00'),t=new Date();
+  let todayLocal=new Date(t.getFullYear(),t.getMonth(),t.getDate());
+  return Math.round((d-todayLocal)/86400000);
+}
+function memberMatchesClient(memberName,client){
+  if(!memberName||!client)return true;
+  let a=normText(memberName),b=normText(client.name||'');
+  if(a===b)return true;
+  let aw=a.split(' ').filter(Boolean),bw=b.split(' ').filter(Boolean);
+  return aw.length>0&&bw.length>0&&aw.every(w=>bw.includes(w));
+}
+
+function findClientByMemberName(memberName){
+  if(!memberName)return null;
+  return db.clients.find(c=>normText(c.name||'')===normText(memberName))||null;
+}
+function findPossibleClientByMemberName(memberName){
+  if(!memberName)return null;
+  let matches=db.clients.filter(c=>memberMatchesClient(memberName,c)||memberMatchesClient(c.name||'',{name:memberName}));
+  return matches.length===1?matches[0]:null;
+}
+
+function ensureImportedOwner(memberName,sourceName='Spreadsheet'){
+  let name=String(memberName||'').replace(/\s+/g,' ').trim();
+  if(!name)return null;
+  let existing=findClientByMemberName(name);
+  if(existing)return existing;
+  let client={
+    id:uid('client'),
+    name,
+    status:'Active',
+    points:0,
+    member_levels:[],
+    resorts:[],
+    client_type:'Imported Owner',
+    client_level:'',
+    contract:'',
+    phone:'',
+    email:'',
+    enrollment_fee:'',
+    start_date:'',
+    end_date:'',
+    profile_incomplete:true,
+    import_source:sourceName,
+    created_at:new Date().toISOString(),
+    updated_at:new Date().toISOString()
+  };
+  db.clients.push(client);
+  return client;
+}
+
+function resolveReservationClient(r){
+  let selectedId=$('#importClient')?.value||'';
+  if(selectedId)return getClient(selectedId)||null;
+  return findClientByMemberName(r.member_name)||null;
+}
+
+
+function normalizeReservationStatus(v){
+  let s=String(v||'').trim().toLowerCase();
+  if(s.includes('cancel'))return'Cancelled';if(s.includes('confirm'))return'Confirmed';if(s.includes('complete')||s.includes('used'))return'Completed';if(s.includes('pend'))return'Pending';if(s.includes('reserv')||s.includes('hold'))return'Reserved';return String(v||'Reserved').trim()||'Reserved';
+}
+function normalizeResortName(v){
+  let s=String(v||'').trim();if(!s)return'';
+  let exact=resorts.find(r=>normText(r)===normText(s));if(exact)return exact;
+  let partial=resorts.find(r=>normText(r).includes(normText(s))||normText(s).includes(normText(r)));return partial||s;
+}
+function reservationHeaderQuality(row){
+  let headers=(row||[]).map(x=>String(x||'').trim()),mapping=detectReservationMapping(headers),mapped=new Set(Object.values(mapping));
+  let required=['reservation_code','resort','category','checkin','checkout','member_name'];
+  return required.reduce((a,k)=>a+(mapped.has(k)?1:0),0);
+}
+function normalizeReservationSheetRows(rows,sheetName='Sheet'){
+  rows=(rows||[]).filter(r=>Array.isArray(r)&&r.some(v=>String(v??'').trim()!==''));
+  if(!rows.length)return null;
+  let bestIndex=-1,bestScore=-1;
+  for(let i=0;i<Math.min(rows.length,20);i++){
+    let score=reservationHeaderQuality(rows[i]);
+    if(score>bestScore){bestScore=score;bestIndex=i}
+  }
+  if(bestIndex<0||bestScore<4)return null;
+  let table=rows.slice(bestIndex);
+  table._sheetName=sheetName;
+  table._headerScore=bestScore;
+  return table;
+}
+async function readReservationTables(file){
+  let name=file.name.toLowerCase(),tables=[];
+  if(/\.(xlsx|xls)$/i.test(name)){
+    if(!window.XLSX)throw new Error('XLSX library did not load.');
+    let wb=XLSX.read(await file.arrayBuffer(),{type:'array',cellDates:false});
+    for(let sheetName of wb.SheetNames){
+      let ws=wb.Sheets[sheetName];
+      let rows=XLSX.utils.sheet_to_json(ws,{header:1,defval:'',raw:true});
+      let table=normalizeReservationSheetRows(rows,sheetName);
+      if(table)tables.push(table);
+    }
+    return tables;
+  }
+  if(name.endsWith('.csv')){
+    let txt=await file.text(),rows;
+    if(window.XLSX){
+      let wb=XLSX.read(txt,{type:'string'}),ws=wb.Sheets[wb.SheetNames[0]];
+      rows=XLSX.utils.sheet_to_json(ws,{header:1,defval:'',raw:true});
+    }else rows=txt.split(/\r?\n/).filter(Boolean).map(line=>line.split(','));
+    let table=normalizeReservationSheetRows(rows,'CSV');
+    if(table)tables.push(table);
+    return tables;
+  }
+  return [];
+}
+async function readReservationTable(file){
+  let tables=await readReservationTables(file);
+  return tables[0]||null;
+}
+function detectReservationMapping(headers){
+  let map={};headers.forEach((h,i)=>{let m=bestReservationField(h);if(m&&!Object.values(map).includes(m.def.field))map[i]=m.def.field});return map;
+}
+function mapReservationRows(table,mapping,sourceName){
+  if(!table||table.length<2)return[];
+  let headers=table[0].map(x=>String(x||'').trim()),rows=[],sheetName=table._sheetName||'';
+  for(let ri=1;ri<table.length;ri++){
+    let raw=table[ri],o={id:uid('rimport'),selected:true,source:sourceName,row_number:ri+1,sheet_name:sheetName};
+    Object.entries(mapping).forEach(([idx,field])=>{if(field&&field!=='days_to_checkin')o[field]=raw[Number(idx)]});
+    o.reservation_code=String(o.reservation_code||'').trim();
+    o.member_name=String(o.member_name||'').trim();o.resort=normalizeResortName(o.resort);o.category=displayRoomCategory(o.category);o.unit_type=String(o.unit_type||'').trim();
+    let rawCheckin=o.checkin,rawCheckout=o.checkout,rawBooking=o.booking_date,pref=reservationDatePreference();o.checkin=normalizeExcelDate(o.checkin,pref);o.checkout=normalizeExcelDate(o.checkout,pref);o.booking_date=normalizeExcelDate(o.booking_date,pref);o.status=normalizeReservationStatus(o.status);
+    o.points_used=n(String(o.points_used??'').replace(/,/g,''));o.revenue=n(String(o.revenue??'').replace(/[$,]/g,''));o.commission=n(String(o.commission??'').replace(/[$,]/g,''));o.net_revenue=n(String(o.net_revenue??'').replace(/[$,]/g,''));if(!o.net_revenue&&o.revenue)o.net_revenue=Math.max(0,o.revenue-o.commission);o.guests=n(o.guests);o.booking_source=String(o.booking_source||'').trim();o.days_to_checkin=daysToCheckin(o.checkin);o.notes=String(o.notes||'').trim();
+    if(!o.reservation_code)o.reservation_code=`IMP-${Date.now().toString().slice(-6)}-${ri}`;
+    let calc=!o.points_used&&o.resort&&o.category&&o.checkin?calculateReservationPoints(o.resort,o.category,o.checkin):null;if(calc){o.points_used=calc.points;o.points_source='Point Chart'}
+    else o.points_source=o.points_used?'Spreadsheet':'Not found';
+    o.errors=[];o.warnings=[];
+    o.date_ambiguous=pref==='auto'&&(isAmbiguousNumericDate(rawCheckin)||isAmbiguousNumericDate(rawCheckout)||isAmbiguousNumericDate(rawBooking));recalcReservationRow(o);if(o.duplicate_id)o.selected=false;
+    rows.push(o);
+  }
+  return rows.filter(r=>r.resort||r.checkin||r.checkout||r.category||r.reservation_code);
+}
+function reservationMappingOptions(current){
+  return '<option value="">Ignore column</option>'+reservationFieldCatalog.map(d=>`<option value="${d.field}" ${d.field===current?'selected':''}>${esc(d.label)}</option>`).join('');
+}
+
+function reservationDuplicateMatch(r,clientId=''){
+  let cid=clientId||r.client_id||resolveReservationClient(r)?.id||'';
+  return db.reservations.find(x=>{
+    if(r.reservation_code && x.reservation_code && normText(x.reservation_code)===normText(r.reservation_code))return true;
+    return cid&&x.client_id===cid&&normText(x.resort)===normText(r.resort)&&x.checkin===r.checkin&&x.checkout===r.checkout&&canonicalCategory(x.category)===canonicalCategory(r.category);
+  })||null;
+}
+function recalcReservationRow(r,{allowPointLookup=true}={}){
+  r.resort=normalizeResortName(r.resort);
+  r.status=normalizeReservationStatus(r.status);
+  r.checkin=normalizeExcelDate(r.checkin);
+  r.checkout=normalizeExcelDate(r.checkout);
+  r.points_used=n(r.points_used);
+  r.errors=[];r.warnings=[];r.duplicate_id='';
+  if(!r.reservation_code)r.warnings.push('Missing reservation ID');
+  if(!r.resort)r.errors.push('Missing resort');
+  if(!r.checkin)r.errors.push('Missing check-in');
+  if(!r.checkout)r.errors.push('Missing check-out');
+  if(r.checkin&&r.checkout&&r.checkout<r.checkin)r.errors.push('Check-out before check-in');
+  if(allowPointLookup && !r.points_used && r.status!=='Cancelled' && r.resort && r.category && r.checkin){
+    let calc=calculateReservationPoints(r.resort,r.category,r.checkin);
+    if(calc){r.points_used=calc.points;r.points_source='Point Chart'}
+  }
+  r.days_to_checkin=daysToCheckin(r.checkin);let capacityRule=roomCapacityRule(r.category);r.max_occupancy=capacityRule.max_occupancy;r.max_adults=capacityRule.max_adults;r.occupancy_rule=capacityRule.family_rule;r.adult_occupancy_rule=capacityRule.adult_rule;if(r.category&&!VALID_ROOM_TYPE_KEYS.has(canonicalCategory(r.category)))r.warnings.push(`Unknown Room Type: ${r.category}`);let selectedId=$('#importClient')?.value||'',resolvedClient=(r.client_id&&getClient(r.client_id))||resolveReservationClient(r);r.client_id=resolvedClient?.id||'';
+  if(selectedId&&r.member_name&&resolvedClient&&!memberMatchesClient(r.member_name,resolvedClient))r.errors.push(`Member mismatch: spreadsheet says ${r.member_name}, selected client is ${resolvedClient.name}`);
+  if(!selectedId&&r.member_name&&!resolvedClient){
+    let possible=findPossibleClientByMemberName(r.member_name);
+    if(possible)r.warnings.push(`Possible owner match: ${possible.name}. Select Assigned Client to confirm.`);
+    else r.errors.push(`Owner not found in Clients: ${r.member_name}`);
+  }
+  if(!selectedId&&!r.member_name)r.errors.push('Missing Member / Owner name');
+  let maxOcc=n(r.max_occupancy)||capacityForRoomType(r.category);if(n(r.guests)>0&&maxOcc>0&&n(r.guests)>maxOcc)r.errors.push(`Party size ${n(r.guests)} exceeds max occupancy ${maxOcc} for ${displayRoomCategory(r.category)}`);if(!r.points_used&&r.status!=='Cancelled')r.warnings.push('No points value');if(r.date_ambiguous)r.warnings.push('Ambiguous numeric date — choose MM/DD/YYYY or DD/MM/YYYY');
+  let dup=reservationDuplicateMatch(r,r.client_id||'');
+  if(dup){r.warnings.push('Possible duplicate');r.duplicate_id=dup.id}
+  r.state=r.errors.length?'ERROR':r.duplicate_id?'DUPLICATE':r.warnings.length?'REVIEW':'READY';
+  return r;
+}
+function reservationStateHTML(r){
+  let cls=r.state==='READY'?'ready':r.state==='ERROR'?'error':r.state==='DUPLICATE'?'duplicate':'review';
+  return `<span class="res-state ${cls}">${r.state}</span>`;
+}
+
+function renderReservationImportReview(){
+  let rows=importReview.reservationRows,headers=importReview.reservationHeaders||[],map=importReview.reservationMapping||{};
+  rows.forEach(r=>recalcReservationRow(r));
+  if(!rows.length){$('#importReviewCenter').innerHTML='<div class="empty">No reservation rows detected.</div>';return}
+  let valid=rows.filter(r=>!r.errors.length).length,warnings=rows.filter(r=>r.warnings.length).length,selected=rows.filter(r=>r.selected).length,points=rows.filter(r=>r.selected&&r.status!=='Cancelled').reduce((a,r)=>a+n(r.points_used),0);
+  let blocked=rows.filter(r=>r.selected&&r.errors.length).length;
+  $('#importReviewCenter').innerHTML=`${headers.length?`<div class="subtle"><b>Reservation Column Mapping</b><div class="muted">Confirm how spreadsheet columns map to reservation fields. Changing a mapping recalculates the preview.</div><div class="res-map-grid">${headers.map((h,i)=>`<div class="res-map-card"><label>${esc(h||'Column '+(i+1))}</label><select data-res-map="${i}">${reservationMappingOptions(map[i]||'')}</select></div>`).join('')}</div></div>`:`<div class="subtle"><b>Screenshot / OCR Reservation Review</b><div class="muted">These rows were extracted from pasted or uploaded images/PDFs. Review and correct every field before confirming.</div></div>`}
+  <div class="res-import-summary"><div class="card"><small>Rows Detected</small><strong>${rows.length}</strong></div><div class="card"><small>Selected</small><strong>${selected}</strong></div><div class="card"><small>Rows Requiring Review</small><strong>${warnings}</strong></div><div class="card"><small>Selected Points</small><strong>${fmt(points)}</strong></div></div>
+  <div class="review-toolbar"><button class="btn" id="resSelectValid">Select Ready Rows</button><button class="btn" id="resSelectAll">Select All</button><button class="btn" id="resClearAll">Clear Selection</button></div>
+  <div class="tablewrap"><table class="review-table res-review-table"><thead><tr><th>Use</th><th>State</th><th>Member</th><th>Assigned Client</th><th>Reservation ID</th><th>Resort</th><th>Category</th><th>Unit Type</th><th>Booking Date</th><th>Check-in</th><th>Days to Check-in</th><th>Check-out</th><th>Status</th><th>Points</th><th>Revenue</th><th>Max Capacity</th><th>Occupancy Rule</th><th>Guests</th><th>Booking Source</th><th>Validation</th></tr></thead><tbody>${rows.map(r=>`<tr class="${r.errors.length?'res-row-error':r.warnings.length?'res-row-warning':''}">
+    <td><input type="checkbox" data-res-check="${r.id}" ${r.selected?'checked':''}></td>
+    <td>${reservationStateHTML(r)}</td>
+    <td><input class="wide-input" data-res-field="${r.id}:member_name" value="${esc(r.member_name||'')}"></td>
+    <td><select class="wide-input" data-res-client="${r.id}"><option value="">Unassigned</option>${db.clients.map(c=>`<option value="${c.id}" ${r.client_id===c.id?'selected':''}>${esc(c.name)}</option>`).join('')}</select></td>
+    <td><input class="wide-input" data-res-field="${r.id}:reservation_code" value="${esc(r.reservation_code)}"></td>
+    <td><select class="wide-input" data-res-field="${r.id}:resort"><option value="${esc(r.resort)}">${esc(r.resort||'Select')}</option>${resorts.filter(x=>x!==r.resort).map(x=>`<option>${esc(x)}</option>`).join('')}</select></td>
+    <td><input data-res-field="${r.id}:category" list="roomTypeOptions" value="${esc(r.category)}"></td>
+    <td><input data-res-field="${r.id}:unit_type" value="${esc(r.unit_type)}"></td>
+    <td><input type="date" data-res-field="${r.id}:booking_date" value="${esc(r.booking_date||'')}"></td>
+    <td><input type="date" data-res-field="${r.id}:checkin" value="${esc(r.checkin)}"></td>
+    <td><b>${r.days_to_checkin==null?'—':fmt(r.days_to_checkin)}</b><div class="muted mini">Calculated</div></td>
+    <td><input type="date" data-res-field="${r.id}:checkout" value="${esc(r.checkout)}"></td>
+    <td><select data-res-field="${r.id}:status">${['Reserved','Confirmed','Pending','Cancelled','Completed'].map(x=>`<option ${x===r.status?'selected':''}>${x}</option>`).join('')}</select></td>
+    <td><input type="number" data-res-field="${r.id}:points_used" value="${n(r.points_used)}"><div class="muted mini">${esc(r.points_source||'')}</div></td>
+    <td><input type="number" step="0.01" data-res-field="${r.id}:revenue" value="${n(r.revenue)}"></td>
+    <td><b>${n(r.max_occupancy)||'—'}</b><div class="muted mini">Auto from Room Type</div></td>
+    <td><span class="mini">${esc(r.occupancy_rule||'Not configured')}${r.adult_occupancy_rule?` / ${esc(r.adult_occupancy_rule)}`:''}</span></td>
+    <td><input type="number" min="0" step="1" data-res-field="${r.id}:guests" value="${n(r.guests)}"></td>
+    <td><input data-res-field="${r.id}:booking_source" value="${esc(r.booking_source||'')}"></td>
+    <td>${r.errors.map(x=>`<div style="color:var(--danger)">• ${esc(x)}</div>`).join('')}${r.warnings.map(x=>`<div style="color:#946200">• ${esc(x)}</div>`).join('')||'<span style="color:var(--ok)">Ready</span>'}</td>
+  </tr>`).join('')}</tbody></table></div>
+  <div class="review-actions"><button class="btn primary" id="confirmReservationImport" ${blocked?'disabled':''}>Confirm Reservations</button><span class="muted">${blocked?`${blocked} selected row(s) contain errors. Correct or deselect them first.`:`${$('#importClient').value?`Reservations will be attached to <b>${esc(getClient($('#importClient').value)?.name||'the selected client')}</b>.`:'Reservations are assigned automatically by the Member column. You can override the Assigned Client per row.'} Cancelled rows do not consume points.`}</span></div>`;
+  document.querySelectorAll('[data-res-map]').forEach(el=>el.onchange=async()=>{importReview.reservationMapping[Number(el.dataset.resMap)]=el.value;await rebuildReservationRows();});
+  $('#resSelectValid').onclick=()=>{rows.forEach(r=>r.selected=r.state==='READY');renderReservationImportReview()};
+  $('#resSelectAll').onclick=()=>{rows.forEach(r=>r.selected=true);renderReservationImportReview()};
+  $('#resClearAll').onclick=()=>{rows.forEach(r=>r.selected=false);renderReservationImportReview()};
+  document.querySelectorAll('[data-res-check]').forEach(el=>el.onchange=()=>{let r=rows.find(x=>x.id===el.dataset.resCheck);if(r){r.selected=el.checked;renderReservationImportReview()}});
+  document.querySelectorAll('[data-res-client]').forEach(el=>el.onchange=()=>{let r=rows.find(x=>x.id===el.dataset.resClient);if(!r)return;r.client_id=el.value;if(r.client_id){let c=getClient(r.client_id);if(c)r.member_name=c.name}recalcReservationRow(r);renderReservationImportReview()});
+  document.querySelectorAll('[data-res-field]').forEach(el=>{
+    el.onchange=()=>{
+      let [id,field]=el.dataset.resField.split(':'),r=rows.find(x=>x.id===id);if(!r)return;
+      let oldPoints=n(r.points_used);
+      r[field]=['points_used','revenue','commission','net_revenue','guests'].includes(field)?n(el.value):el.value;
+      if(field==='points_used'){r.points_source='Manual Review'}
+      if(['booking_date','checkin','checkout'].includes(field))r.date_ambiguous=false;
+      if(['resort','category','checkin'].includes(field) && (r.points_source==='Point Chart'||!oldPoints)){r.points_used=0;r.points_source='Not found'}
+      recalcReservationRow(r);
+      renderReservationImportReview();
+    };
+  });
+  if($('#confirmReservationImport'))$('#confirmReservationImport').onclick=confirmReservationImport;
+}
+async function rebuildReservationRows(){
+  if(!importReview.reservationTable)return;
+  importReview.reservationRows=mapReservationRows(importReview.reservationTable,importReview.reservationMapping,importReview.reservationSource||'Spreadsheet');renderReservationImportReview();
+}
+
+function parseReservationTextRows(text,sourceName='Screenshot'){
+  let lines=String(text||'').replace(/\r/g,'\n').split(/\n+/).map(x=>x.trim()).filter(Boolean),rows=[];
+  const dateRx=/(\d{4}-\d{1,2}-\d{1,2}|\d{1,2}[\/.-]\d{1,2}[\/.-]\d{2,4}|(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{1,2}(?:,\s*\d{4})?|(?:lunes|martes|mi[eé]rcoles|jueves|viernes|s[aá]bado|domingo)?\s*,?\s*\d{1,2}\s+de\s+(?:enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|setiembre|octubre|noviembre|diciembre)\s+de\s+\d{4})/ig;
+  const statusRx=/(confirmed|reserved|pending|cancelled|canceled|completed)/i;
+  const categoryRx=/(2\s*br\s*ph\s*elite|2\s*br\s*elite|2\s*br\s*of|1\s*br\s*elite|3\s*br\s*of|st\s*elite|1\s*br|2\s*br|3\s*br|st\b)/i;
+  const resortNames=resorts.slice().sort((a,b)=>b.length-a.length);
+
+  function findResort(s){
+    let ns=normText(s);
+    let exact=resortNames.find(r=>ns.includes(normText(r)));if(exact)return exact;
+    let aliases=[
+      ['Villa del Palmar Loreto',['palmar loreto','vdp loreto','loreto']],
+      ['Villa del Palmar Cabo',['palmar cabo','vdp cabo']],
+      ['Villa del Arco',['del arco','villa arco']],
+      ['Villa La Valencia',['la valencia','valencia cabo']],
+      ['Villa La Estancia Los Cabos',['estancia los cabos','la estancia cabo']],
+      ['Villa del Palmar Puerto Vallarta',['palmar puerto vallarta','palmar vallarta']],
+      ['Villa del Palmar Flamingos',['palmar flamingos','flamingos']],
+      ['Villa La Estancia Riviera Nayarit',['estancia riviera nayarit','la estancia nayarit']]
+    ];
+    for(let [full,als] of aliases)if(als.some(a=>ns.includes(normText(a))))return full;return '';
+  }
+  function parseDateToken(s){let iso=normalizeExcelDate(s);if(iso)return iso;let d=new Date(s);return isNaN(d)?'':d.toISOString().slice(0,10)}
+  function pointCandidates(s,dates=[]){
+    let cleaned=String(s);
+    dates.forEach(d=>{cleaned=cleaned.replace(d,' ')});
+    cleaned=cleaned.replace(/\b(?:19|20)\d{2}\b/g,' ');
+    let explicit=[...cleaned.matchAll(/(?:points?|pts?)\s*[:#-]?\s*([\d,]{3,7})|([\d,]{3,7})\s*(?:points?|pts?)/ig)].map(m=>Number(String(m[1]||m[2]).replace(/,/g,''))).filter(v=>v>=100);
+    return explicit;
+  }
+  function makeRow({line,block,index,resort,dates,status,category,points}){
+    let r={id:uid('rimport'),selected:true,source:sourceName,row_number:index+1,reservation_code:'',resort,category:displayRoomCategory(category||''),unit_type:'',checkin:parseDateToken(dates[0]),checkout:parseDateToken(dates[1]),status:normalizeReservationStatus(status||'Reserved'),points_used:points.length?points[points.length-1]:0,notes:'Imported from OCR screenshot',points_source:points.length?'Screenshot':'Not found',errors:[],warnings:[]};
+    let idm=String(line||block||'').match(/(?:reservation|confirmation|booking)\s*(?:id|#|number)?\s*[:#-]?\s*([A-Z0-9-]{4,})/i);if(idm)r.reservation_code=idm[1];
+    if(!r.reservation_code)r.reservation_code=`IMG-${Date.now().toString().slice(-6)}-${index+1}`;
+    recalcReservationRow(r);if(r.duplicate_id)r.selected=false;return r;
+  }
+
+  for(let i=0;i<lines.length;i++){
+    let line=lines[i],dates=[...line.matchAll(dateRx)].map(m=>m[0]),resort=findResort(line),status=(line.match(statusRx)||[])[0]||'',category=(line.match(categoryRx)||[])[0]||'';
+    if(resort&&dates.length>=2)rows.push(makeRow({line,index:i,resort,dates,status,category,points:pointCandidates(line,dates)}));
+  }
+
+  if(!rows.length){
+    for(let i=0;i<lines.length;i++){
+      let resort=findResort(lines[i]);if(!resort)continue;
+      let block=lines.slice(i,Math.min(lines.length,i+8)).join(' | '),dates=[...block.matchAll(dateRx)].map(m=>m[0]),category=(block.match(categoryRx)||[])[0]||'',status=(block.match(statusRx)||[])[0]||'';
+      if(dates.length<2)continue;
+      rows.push(makeRow({block,index:i,resort,dates,status,category,points:pointCandidates(block,dates)}));i+=2;
+    }
+  }
+
+  // Additional fallback for OCR that preserves rows but does not include header labels.
+  if(rows.length<=1){
+    let codeRx=/\b[0-9][A-Z0-9]{5,8}\b/i;
+    for(let i=0;i<lines.length;i++){
+      let cm=lines[i].match(codeRx);if(!cm)continue;
+      let block=lines.slice(i,Math.min(lines.length,i+6)).join(' | ');
+      let dates=[...block.matchAll(dateRx)].map(m=>m[0]);
+      let resort=findResort(block),category=(block.match(categoryRx)||[])[0]||'';
+      let member='';
+      let memberMatch=block.match(/\b([A-ZÁÉÍÓÚÑ][a-záéíóúñ]+\s+[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)\b/g);
+      if(memberMatch)member=memberMatch[memberMatch.length-1];
+      if(resort&&dates.length>=2){
+        let r=makeRow({block,index:i,resort,dates,status:'Reserved',category,points:pointCandidates(block,dates)});
+        r.reservation_code=cm[0];
+        r.member_name=member;
+        recalcReservationRow(r);
+        rows.push(r);
+      }
+    }
+  }
+
+  let seen=new Set();
+  return rows.filter(r=>{let k=[normText(r.reservation_code),r.checkin,r.checkout].join('|');if(seen.has(k))return false;seen.add(k);return true});
+}
+async function analyzeReservationFiles(){
+  let clientId=$('#importClient').value;
+
+  let spreadsheet=importFiles.find(f=>/\.(xlsx|xls|csv)$/i.test(f.name));
+  if(spreadsheet){
+    $('#importStatus').textContent=`Reading reservation spreadsheet ${spreadsheet.name}…`;
+    let tables=await readReservationTables(spreadsheet);
+    if(!tables.length)throw new Error('No reservation table was found. Expected headers include Conf. Number, Room Type, Hotel, Check in, Check out and Member.');
+    let allRows=[],firstHeaders=[],firstMapping={},createdOwners=[];
+    for(let ti=0;ti<tables.length;ti++){
+      let table=tables[ti],headers=table[0].map(x=>String(x||'').trim()),mapping=detectReservationMapping(headers),mapped=new Set(Object.values(mapping));
+      let missing=['reservation_code','category','resort','checkin','checkout','member_name'].filter(k=>!mapped.has(k));
+      if(missing.length)continue;
+      if(!firstHeaders.length){firstHeaders=headers;firstMapping=mapping}
+      let mappedRows=mapReservationRows(table,mapping,`${spreadsheet.name}${table._sheetName?` · ${table._sheetName}`:''}`);
+      for(let r of mappedRows){
+        if(!$('#importClient').value&&r.member_name&&!findClientByMemberName(r.member_name)){
+          let owner=ensureImportedOwner(r.member_name,spreadsheet.name);
+          if(owner&&!createdOwners.includes(owner.id))createdOwners.push(owner.id);
+          r.client_id=owner?.id||'';
+        }
+        recalcReservationRow(r);
+      }
+      allRows.push(...mappedRows);
+    }
+    if(!allRows.length)throw new Error('Reservation columns were detected, but no usable reservation rows were found.');
+    importReview.reservationTable=tables[0];importReview.reservationHeaders=firstHeaders;importReview.reservationMapping=firstMapping;importReview.reservationSource=spreadsheet.name;importReview.reservationRows=allRows;
+    $('#importProgress').style.width='100%';renderReservationImportReview();$('#importStatus').className='status-line ok';
+    $('#importStatus').textContent=`${allRows.length} reservation row(s) detected from ${tables.length} worksheet(s). ${createdOwners.length} missing owner profile(s) created automatically. Review before confirming.`;
+    return true;
+  }
+
+  let visualFiles=importFiles.filter(f=>f.type?.startsWith('image/')||f.type==='application/pdf'||/\.(png|jpg|jpeg|webp|pdf)$/i.test(f.name));
+  if(visualFiles.length){
+    let rows=[],allText='';
+    for(let i=0;i<visualFiles.length;i++){
+      let f=visualFiles[i];$('#importStatus').textContent=`Reading reservation screenshot ${f.name} (${i+1}/${visualFiles.length})…`;
+      if(f.type?.startsWith('image/')||/\.(png|jpg|jpeg|webp)$/i.test(f.name)){
+        let ocr=await ocrReservationImage(f,msg=>$('#importStatus').textContent=msg);
+        allText+='\n'+ocr.text;
+        let positional=reservationRowsFromTsv(ocr.tsv,f.name);
+        if(positional.length>=2)rows.push(...positional);
+        else rows.push(...parseReservationTextRows(ocr.text,f.name));
+      }else{
+        let txt=await extractFileText(f,msg=>$('#importStatus').textContent=msg);allText+='\n'+txt;
+        rows.push(...parseReservationTextRows(txt,f.name));
+      }
+    }
+    importReview.rawText=allText;importReview.reservationSource=visualFiles.map(f=>f.name).join(', ');importReview.reservationRows=rows;importReview.reservationTable=null;importReview.reservationHeaders=[];importReview.reservationMapping={};
+    if(!rows.length){$('#importReviewCenter').innerHTML=`<div class="panel"><h3>OCR completed, but reservation rows could not be structured automatically.</h3><p class="muted">The extracted text is shown below. You can use it as a reference or upload a clearer screenshot.</p><div class="preview">${esc(allText.slice(0,12000))}</div></div>`;$('#importStatus').className='status-line warn';$('#importStatus').textContent='OCR completed, but no reservation rows were confidently detected.';return false}
+    renderReservationImportReview();$('#importProgress').style.width='100%';$('#importStatus').className='status-line ok';$('#importStatus').textContent=`${rows.length} reservation row(s) detected from screenshot/PDF OCR. Review every row before confirming.`;return true;
+  }
+
+  // Allow a pasted screenshot to be analyzed even when the browser exposes it as clipboard text.
+  let pasted=$('#pasteArea').value.trim();
+  if(pasted){
+    let rows=parseReservationTextRows(pasted,'Pasted content');importReview.reservationRows=rows;importReview.reservationTable=null;importReview.reservationHeaders=[];importReview.reservationMapping={};importReview.reservationSource='Pasted content';
+    if(rows.length){renderReservationImportReview();$('#importStatus').className='status-line ok';$('#importStatus').textContent=`${rows.length} reservation row(s) detected from pasted content.`;return true}
+  }
+
+  $('#importStatus').className='status-line warn';$('#importStatus').textContent='For Reservations, upload XLS/XLSX/CSV or paste/drop a PNG, JPG, WEBP or PDF screenshot.';return false;
+}
+function confirmReservationImport(){
+  importReview.reservationRows.forEach(r=>recalcReservationRow(r));
+  let rows=importReview.reservationRows.filter(r=>r.selected);if(!rows.length){alert('Select at least one reservation row.');return}
+  let invalid=rows.filter(r=>r.errors.length||!r.client_id);if(invalid.length){alert(`${invalid.length} selected row(s) are missing an owner/client or still have errors. Correct them or deselect them before import.`);renderReservationImportReview();return}
+  let duplicates=rows.filter(r=>r.duplicate_id);if(duplicates.length&&!confirm(`${duplicates.length} selected row(s) appear to duplicate reservations already stored. Import them anyway?`))return;
+
+  let byClient={};rows.filter(r=>r.status!=='Cancelled').forEach(r=>{byClient[r.client_id]=(byClient[r.client_id]||0)+n(r.points_used)});
+  let shortages=Object.entries(byClient).map(([cid,pts])=>({client:getClient(cid),pts,available:pointsRemainingForClient(cid)})).filter(x=>x.client&&x.pts>x.available);
+  if(shortages.length){
+    let msg=shortages.map(x=>`${x.client.name}: importing ${fmt(x.pts)} pts / ${fmt(x.available)} available`).join('\n');
+    if(!confirm(`Some owners would exceed available points:\n\n${msg}\n\nImport anyway?`))return;
+  }
+
+  rows.forEach(r=>db.reservations.push({id:uid('reservation'),client_id:r.client_id,member_name:r.member_name||getClient(r.client_id)?.name||'',reservation_code:r.reservation_code,resort:r.resort,category:r.category,unit_type:r.unit_type,checkin:r.checkin,checkout:r.checkout,days_to_checkin:daysToCheckin(r.checkin),booking_date:r.booking_date||'',status:r.status,points_used:n(r.points_used),revenue:n(r.revenue),commission:n(r.commission),net_revenue:n(r.net_revenue)||(n(r.revenue)-n(r.commission)),max_occupancy:n(r.max_occupancy),max_adults:n(r.max_adults),occupancy_rule:r.occupancy_rule||'',adult_occupancy_rule:r.adult_occupancy_rule||'',guests:n(r.guests),booking_source:r.booking_source||'',notes:r.notes||`Imported from ${r.source}`,import_source:r.source,import_sheet:r.sheet_name||'',created_at:new Date().toISOString()}));
+  save();
+  let ownerCount=new Set(rows.map(r=>r.client_id)).size;
+  log('reservation_bulk_import','multi_client',`${rows.length} reservations imported for ${ownerCount} client(s) from ${importReview.reservationSource||'source'}`);
+  rows.forEach(r=>r.selected=false);$('#importStatus').className='status-line ok';$('#importStatus').textContent=`Import complete. ${rows.length} reservation(s) added across ${ownerCount} client(s). Points and client profiles were recalculated.`;renderAll();renderReservationImportReview();
+}
+async function analyzeImport(){
+  let raw=$('#pasteArea').value.trim(),cands=[],tables=[];$('#importProgress').style.width='2%';$('#importStatus').className='status-line';
+  try{
+    let importType=$('#importType')?.value||'auto';
+    if(importType==='reservations'){await analyzeReservationFiles();return}
+    if(importType==='auto'){
+      let spreadsheet=importFiles.find(f=>/\.(xlsx|xls|csv)$/i.test(f.name));
+      if(spreadsheet){let table=await readReservationTable(spreadsheet);if(table&&table.length>1){let headers=table[0].map(x=>String(x||'')),mapping=detectReservationMapping(headers),mapped=Object.values(mapping);if(mapped.includes('checkin')&&mapped.includes('checkout')&&(mapped.includes('resort')||mapped.includes('reservation_code'))){await analyzeReservationFiles();return}}}
+    }
+    if(raw)cands.push(...extractKeyValueCandidates(raw,'Pasted text'));
+    for(let i=0;i<importFiles.length;i++){
+      let f=importFiles[i];$('#importStatus').textContent=`Processing ${f.name} (${i+1}/${importFiles.length})…`;
+      let txt=await extractFileText(f,msg=>$('#importStatus').textContent=msg);raw+='\n'+txt;
+      if(/\.(xlsx|xls|csv)$/i.test(f.name))cands.push(...parseSpreadsheetCandidates(txt,f.name));
+      cands.push(...extractKeyValueCandidates(txt,f.name));
+    }
+    let bestByField={};for(let x of cands){let old=bestByField[x.field];if(!old||x.confidence>old.confidence)bestByField[x.field]=x}
+    importReview={candidates:Object.values(bestByField),rawText:raw,tables,sourceNames:importFiles.map(x=>x.name)};
+    $('#importProgress').style.width='100%';renderImportReview();$('#importStatus').className='status-line ok';$('#importStatus').textContent=`Analysis complete. ${importReview.candidates.length} CRM field(s) proposed for review. Nothing has been saved.`;
+  }catch(e){$('#importStatus').className='status-line warn';$('#importStatus').textContent='Import error: '+e.message}
+}
+function mergeMulti(current,value){
+  let a=Array.isArray(current)?current:[...String(current||'').split(/\||,|;/).map(x=>x.trim()).filter(Boolean)];
+  let b=String(value||'').split(/\||,|;/).map(x=>x.trim()).filter(Boolean);b.forEach(x=>{if(!a.some(y=>normText(y)===normText(x)))a.push(x)});return a;
+}
+function confirmReviewedImport(){
+  let selected=importReview.candidates.filter(x=>x.selected&&x.field);
+  if(!selected.length){alert('Select at least one detected field.');return}
+  let clientId=$('#importClient').value,campaignId=$('#importCampaign').value;
+  let client=getClient(clientId),clientRows=selected.filter(x=>(importFieldCatalog.find(d=>d.field===x.field)?.scope)==='client'),kpiRows=selected.filter(x=>(importFieldCatalog.find(d=>d.field===x.field)?.scope)==='kpi');
+  if(clientRows.length&&!client){alert('Select a Reference Client before importing client fields.');return}
+  if(kpiRows.length&&!campaignId){alert('Select a Reference Campaign before importing KPI fields.');return}
+  if(kpiRows.length&&(!$('#importDateFrom').value||!$('#importDateTo').value)){alert('Enter KPI Date From and Date To before importing KPI fields.');return}
+  if(client){
+    clientRows.forEach(x=>{let d=importFieldCatalog.find(q=>q.field===x.field),v=normalizeImportValue(x.field,x.value);if(d.type==='number')client[x.field]=n(v);else if(d.type==='multi')client[x.field]=mergeMulti(client[x.field],v);else client[x.field]=v});
+    if(clientRows.some(x=>x.field==='start_date')&&!clientRows.some(x=>x.field==='end_date')&&client.start_date)client.end_date=addYear(client.start_date);
+    client.updated_at=new Date().toISOString();
+  }
+  if(kpiRows.length){
+    let campaign=getCampaign(campaignId);if(!campaign){alert('Campaign not found.');return}
+    let o={id:uid('metric'),client_id:campaign.client_id,campaign_id:campaign.id,date_from:$('#importDateFrom').value,date_to:$('#importDateTo').value,created_at:new Date().toISOString(),imported:true};
+    kpiRows.forEach(x=>o[x.field]=n(normalizeImportValue(x.field,x.value)));
+    db.campaign_metrics.push(o);log('kpi_import',o.id,`${campaign.name} ${o.date_from} — ${o.date_to}`);
+  }
+  save();log('reviewed_import',clientId||campaignId,`${selected.length} confirmed field(s)`);
+  $('#importStatus').className='status-line ok';$('#importStatus').textContent=`Import confirmed. ${selected.length} field(s) saved to the CRM.`;renderAll();
+}
+async function saveReferenceDocs(){
+  if(!importFiles.length){$('#importStatus').textContent='Add files first.';return}
+  let client_id=$('#importClient').value,campaign_id=$('#importCampaign').value;
+  if(!client_id){$('#importStatus').className='status-line warn';$('#importStatus').textContent='Select a Reference Client before saving documents.';return}
+  $('#importStatus').textContent='Saving reference documents…';
+  for(let f of importFiles){let id=uid('doc'),file_id=uid('file'),text='';try{text=await extractFileText(f)}catch{}await FileStore.put(file_id,f);db.documents.push({id,file_id,client_id,campaign_id,name:f.name,type:f.type,size:f.size,extracted_text:text.slice(0,30000),created_at:new Date().toISOString()})}
+  save();log('documents_import',client_id,`${importFiles.length} reference document(s)`);$('#importStatus').className='status-line ok';$('#importStatus').textContent=`${importFiles.length} document(s) saved as reference.`;documents();renderAll()
+}
+function documents(){
+  let client=$('#importClient')?.value||'',list=db.documents.filter(d=>!client||d.client_id===client);
+  $('#documentsView').innerHTML=list.length?`<div class="doc-grid">${list.map(d=>`<div class="doc-card"><b>${esc(d.name)}</b><div class="muted mini">${esc(getClient(d.client_id)?.name||'')} · ${esc(d.type||'file')} · ${Math.round(n(d.size)/1024)} KB</div><div class="doc-actions"><button class="btn" data-open-file="${esc(d.file_id)}">Open</button><button class="btn danger" data-delete-doc="${d.id}">Delete</button></div>${d.extracted_text?`<details style="margin-top:8px"><summary>Extracted text</summary><div class="preview">${esc(d.extracted_text.slice(0,2500))}</div></details>`:''}</div>`).join('')}</div>`:'<div class="empty">No reference documents stored.</div>';
+}
+
+function exportReportPDF(){
+  let el=$('#clientReport');if(!el||!el.innerText.trim()){alert('Generate a report first.');return}
+  if(window.html2pdf){let name=(getClient($('#reportClient').value)?.name||'client').replace(/[^a-z0-9]+/gi,'_');html2pdf().set({margin:0.35,filename:`Client_Dashboard_Travel_Mexico_${name}.pdf`,html2canvas:{scale:2},jsPDF:{unit:'in',format:'letter',orientation:'portrait'}}).from(el).save()}else window.print()
+}
+function exportReportXLSX(){
+  if(!window.XLSX){alert('XLSX library did not load. Check internet connection.');return}
+  let id=$('#reportClient').value,c=getClient(id);if(!c){alert('Select a client.');return}
+  let from=$('#reportFrom').value,to=$('#reportTo').value;if((from&&!to)||(!from&&to)){alert('Select both report dates or leave both blank.');return}
+  let metricRows=metricsFor(id,from,to),m=sumMetrics(metricRows),allReservations=db.reservations.filter(r=>r.client_id===id),rs=allReservations.filter(r=>!from||((r.checkout||r.checkin)>=from&&(r.checkin||r.checkout)<=to)),commercial=allReservations.filter(r=>{if(!['Confirmed','Completed'].includes(r.status))return false;let d=r.booking_date||(r.created_at||'').slice(0,10)||r.checkin;return(!from||d>=from)&&(!to||d<=to)});
+  let revenue=commercial.reduce((a,r)=>a+n(r.revenue||r.rental_price),0),netRevenue=commercial.reduce((a,r)=>a+(n(r.net_revenue)||Math.max(0,n(r.revenue||r.rental_price)-n(r.commission))),0);
+  let selectedCampaignIds=new Set(metricRows.map(x=>x.campaign_id)),campaigns=db.campaigns.filter(x=>x.client_id===id&&(!from||selectedCampaignIds.has(x.id)||(x.start_date&&x.end_date&&x.start_date>=from&&x.end_date<=to))),adSpend=n(m.ad_spend)||campaigns.reduce((a,x)=>a+n(x.ad_spend),0),roas=adSpend?revenue/adSpend:0,cac=commercial.length?adSpend/commercial.length:0;
+  let summary=[['Client Dashboard - Travel Mexico',''],['Client',c.name],['Contract',c.contract||''],['Member Levels',(c.member_levels||[]).join(', ')],['Primary Resorts',(c.resorts||[]).join(', ')],['Total Points',num(c.points)],['Points Used',pointsUsedForClient(id)],['Available Points',num(c.points)-pointsUsedForClient(id)],['From',from||'All'],['To',to||'All'],['Bookings',commercial.length],['Gross Revenue',revenue],['Net Revenue',netRevenue],['Stored Campaign Ad Spend',adSpend],['Cost per Booking',commercial.length?cac:''],['ROAS',adSpend?roas:''],[],['Metric','Value'],['Total Leads',m.total_leads],['Warm Leads',m.warm_leads],['Qualified Leads',m.qualified_leads],['Hot Leads',m.hot_leads],['Interest Rate %',m.interest_rate],['Response Rate %',m.response_rate],['Average Response Time',m.avg_response_time],['Abandoned Carts',m.abandoned_carts],['Returning Visitors',m.returning_visitors],['Lead-to-Qualified %',m.lead_to_qualified],['Cart Abandonment Rate %',m.cart_abandonment],['Repeat Visitor Rate %',m.repeat_rate],['Leads from Ads',m.leads_ads],['Organic Leads',m.organic_leads],['Lead Quality Score',m.lead_quality_score]];
+  let wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(summary),'Dashboard');
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.json_to_sheet(rs.map(r=>({Reservation:r.reservation_code,Resort:r.resort,Category:r.category,UnitType:r.unit_type,BookingDate:r.booking_date,CheckIn:r.checkin,CheckOut:r.checkout,Status:r.status,PointsUsed:r.points_used,GrossRevenue:r.revenue||r.rental_price||0,Commission:r.commission||0,NetRevenue:r.net_revenue||0,BookingSource:r.booking_source||''}))),'Reservations');
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.json_to_sheet(metricsFor(id,from,to)),'KPI Periods');
+  XLSX.writeFile(wb,`Client_Dashboard_Travel_Mexico_${(c.name||'client').replace(/[^a-z0-9]+/gi,'_')}.xlsx`);
+}
+
+
+async function blobToDataURL(blob){return await new Promise((res,rej)=>{let r=new FileReader();r.onload=()=>res(r.result);r.onerror=()=>rej(r.error);r.readAsDataURL(blob)})}
+function dataURLToBlob(dataURL){let [meta,data]=String(dataURL).split(','),mime=(meta.match(/data:([^;]+)/)||[])[1]||'application/octet-stream',bin=atob(data),arr=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)arr[i]=bin.charCodeAt(i);return new Blob([arr],{type:mime})}
+/* ---------- BACKUP / RESTORE ---------- */
+async function exportFullBackup(){
+  let ids=[...new Set([...db.documents.map(x=>x.file_id),...db.point_charts.map(x=>x.file_id)].filter(Boolean))],files={};
+  for(let id of ids){let blob=await FileStore.get(id);if(blob)files[id]={type:blob.type||'',data:await blobToDataURL(blob)}}
+  let payload={format:'Travel Mexico CRM Full Backup',version:1,exported_at:new Date().toISOString(),db,files};
+  let blob=new Blob([JSON.stringify(payload)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`travel_mexico_crm_full_backup_${today()}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)
+}
+async function restoreFullBackup(file){
+  let data=JSON.parse(await file.text());if(!data||!data.db)throw new Error('Invalid backup file.');
+  if(!confirm('Restore this backup? Current CRM data and stored files in this browser will be replaced.'))return;
+  await FileStore.clear();db=Storage.normalize(data.db);for(let [id,f] of Object.entries(data.files||{})){if(f?.data)await FileStore.put(id,dataURLToBlob(f.data))}
+  save();masterFilterState={from:'',to:'',client:'',campaign:'',resort:'',level:'',status:''};renderAll();$('#systemHealth').className='status-line ok';$('#systemHealth').textContent='Full backup restored successfully.';
+}
+
+function runDataIntegrityCheck(){
+  let issues=[],collectionsToCheck=['clients','campaigns','campaign_metrics','reservations','documents','point_charts','point_rules','room_capacities'];
+  for(let key of collectionsToCheck){
+    let seen=new Set();
+    for(let row of db[key]||[]){
+      if(!row.id){issues.push(`${key}: record without ID`);continue}
+      if(seen.has(row.id))issues.push(`${key}: duplicate ID ${row.id}`);
+      seen.add(row.id);
+    }
+  }
+  for(let c of db.campaigns)if(!getClient(c.client_id))issues.push(`Campaign without valid client: ${c.name||c.id}`);
+  for(let m of db.campaign_metrics){
+    if(!getClient(m.client_id))issues.push(`KPI period without valid client: ${m.id}`);
+    if(!getCampaign(m.campaign_id))issues.push(`KPI period without valid campaign: ${m.id}`);
+    if(m.date_from&&m.date_to&&m.date_to<m.date_from)issues.push(`Invalid KPI date range: ${m.id}`);
+  }
+  for(let r of db.reservations){
+    if(!getClient(r.client_id))issues.push(`Reservation without valid client: ${r.reservation_code||r.id}`);
+    if(r.category&&!VALID_ROOM_TYPE_KEYS.has(canonicalCategory(r.category)))issues.push(`Unknown reservation room type: ${r.category}`);
+    if(r.checkin&&r.checkout&&r.checkout<r.checkin)issues.push(`Invalid reservation dates: ${r.reservation_code||r.id}`);let cap=roomCapacityRule(r.category);if(cap.max_occupancy&&n(r.max_occupancy)&&n(r.max_occupancy)!==cap.max_occupancy)issues.push(`Reservation capacity differs from current room rule: ${r.reservation_code||r.id}`);
+  }
+  for(let c of db.room_capacities||[]){if(!VALID_ROOM_TYPE_KEYS.has(canonicalCategory(c.room_type)))issues.push(`Unknown Room Capacity type: ${c.room_type}`);if(n(c.max_occupancy)<0)issues.push(`Invalid max occupancy for ${c.room_type}`)}
+  for(let r of db.point_rules){
+    if(r.category&&!VALID_ROOM_TYPE_KEYS.has(canonicalCategory(r.category)))issues.push(`Unknown Point Rule room type: ${r.category}`);
+    if(r.date_from&&r.date_to&&r.date_to<r.date_from)issues.push(`Invalid Point Rule dates: ${r.id}`);
+  }
+  return issues;
+}
+
+function updateSystemHealth(){
+  let el=$('#systemHealth');if(!el)return;
+  let missing=[];if(!window.XLSX)missing.push('XLSX');if(!window.Tesseract)missing.push('OCR');if(!window.pdfjsLib)missing.push('PDF Reader');if(!window.html2pdf)missing.push('PDF Export');
+  let issues=runDataIntegrityCheck();
+  if(issues.length){
+    el.className='status-line warn';
+    el.innerHTML=`<b>${APP_VERSION}</b> · Data integrity review: ${issues.length} issue(s).<details style="margin-top:6px"><summary>View issues</summary><div class="preview">${issues.map(x=>esc(x)).join('<br>')}</div></details>${missing.length?`<div style="margin-top:6px">External modules not loaded: ${esc(missing.join(', '))}</div>`:''}`;
+  }else{
+    el.className='status-line '+(missing.length?'warn':'ok');
+    el.innerHTML=missing.length?`<b>${APP_VERSION}</b> · Core CRM data is consistent. External modules not loaded: ${esc(missing.join(', '))}. Check internet connection.`:`<b>${APP_VERSION}</b> · System ready. Data integrity check passed and external modules are loaded.`;
+  }
+}
+
+function renderAll(){if(!$('#clientsTable'))renderClientsShell();master();clients();campaigns();bookings();leads();points();calendar();reportOptions();let ic=$('#importClient');if(ic){let keep=ic.value;ic.innerHTML='<option value="">Auto assign by Member</option>'+optionsClients(keep);ic.value=keep}documents();updateImportCampaigns();updateSystemHealth()}
+function updateImportCampaigns(){let el=$('#importCampaign');if(!el)return;let cid=$('#importClient')?.value||'',keep=el.value;el.innerHTML='<option value="">No campaign</option>'+db.campaigns.filter(c=>!cid||c.client_id===cid).map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join('');if([...el.options].some(o=>o.value===keep))el.value=keep}
+$('#newClientTop').onclick=$('#newClientBtn').onclick=()=>clientModal();
+$('#newCampaignBtn').onclick=()=>campaignModal();$('#newBookingBtn').onclick=()=>bookingModal();
+if($('#importReservationsBtn'))$('#importReservationsBtn').onclick=()=>{route('import');$('#importType').value='reservations';$('#importStatus').textContent='For a single owner, select the client. For files containing multiple owners, leave Reference Client on Auto assign by Member, then upload XLS/XLSX/CSV or paste screenshots.'};
+$('#generateReport').onclick=generateReport;$('#exportReportPdf').onclick=exportReportPDF;$('#exportReportXlsx').onclick=exportReportXLSX;
+$('#analyzeImport').onclick=analyzeImport;$('#saveReferenceDocs').onclick=saveReferenceDocs;
+$('#clearImport').onclick=()=>{importFiles=[];importReview={candidates:[],rawText:'',tables:[],sourceNames:[],reservationRows:[],reservationHeaders:[],reservationMapping:{}};$('#importFile').value='';$('#pasteArea').value='';$('#importReviewCenter').innerHTML='<div class="empty">Analyze files or pasted content to create an import review.</div>';$('#importProgress').style.width='0%';$('#importStatus').className='status-line';$('#importStatus').textContent='Ready.';renderImportFiles()};
+$('#clientSearch').oninput=clients;$('#clientStatusFilter').onchange=clients;
+$('#newPointChartBtn').onclick=pointChartModal;$('#newPointRuleBtn').onclick=()=>pointRuleModal();
+if($('#saveRoomCapacities'))$('#saveRoomCapacities').onclick=saveRoomCapacities;
+$('#importClient').onchange=()=>{updateImportCampaigns();documents();if(importReview.reservationTable)rebuildReservationRows();else if(importReview.reservationRows?.length){importReview.reservationRows.forEach(r=>recalcReservationRow(r));renderReservationImportReview()}};
+if($('#importDateFormat'))$('#importDateFormat').onchange=()=>{if(importReview.reservationTable)rebuildReservationRows();else if(importReview.reservationRows?.length){importReview.reservationRows.forEach(r=>recalcReservationRow(r));renderReservationImportReview()}};
+document.addEventListener('click',async e=>{
+  let v=e.target.closest('[data-view-client]'),ed=e.target.closest('[data-edit-client]'),k=e.target.closest('[data-kpi]'),open=e.target.closest('[data-open-file]'),dd=e.target.closest('[data-delete-doc]'),dc=e.target.closest('[data-delete-chart]'),dr=e.target.closest('[data-delete-rule]'),cr=e.target.closest('[data-chart-rule]'),ec=e.target.closest('[data-edit-campaign]'),xc=e.target.closest('[data-delete-campaign]'),er=e.target.closest('[data-edit-reservation]'),xr=e.target.closest('[data-delete-reservation]');
+  if(v)profile(v.dataset.viewClient);
+  if(ed)clientModal(ed.dataset.editClient);
+  if(k)kpiModal(k.dataset.kpi);
+  if(cr)pointRuleModal(cr.dataset.chartRule);
+  if(ec){let c=getCampaign(ec.dataset.editCampaign);if(c)campaignModal(c.client_id,c.id)}
+  if(er){let r=db.reservations.find(x=>x.id===er.dataset.editReservation);if(r)bookingModal(r.client_id,r.id)}
+  if(xc){let c=getCampaign(xc.dataset.deleteCampaign);if(c&&confirm(`Delete campaign "${c.name}" and all of its stored KPI periods?`)){db.campaigns=db.campaigns.filter(x=>x.id!==c.id);db.campaign_metrics=db.campaign_metrics.filter(x=>x.campaign_id!==c.id);save();log('campaign_delete',c.id,c.name);renderAll()}}
+  if(xr){let r=db.reservations.find(x=>x.id===xr.dataset.deleteReservation);if(r&&confirm(`Delete reservation ${r.reservation_code}? Points will be recalculated automatically.`)){db.reservations=db.reservations.filter(x=>x.id!==r.id);save();log('reservation_delete',r.id,r.reservation_code);renderAll()}}
+  if(open){let blob=await FileStore.get(open.dataset.openFile);if(blob){let u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.target='_blank';a.rel='noopener';a.click();setTimeout(()=>URL.revokeObjectURL(u),30000)}else alert('Stored file was not found in this browser.')}
+  if(dd&&confirm('Delete this reference document?')){let d=db.documents.find(x=>x.id===dd.dataset.deleteDoc);if(d)await FileStore.del(d.file_id);db.documents=db.documents.filter(x=>x.id!==dd.dataset.deleteDoc);save();renderAll()}
+  if(dc&&confirm('Delete this point chart? Point Rules will remain unless deleted separately.')){let d=db.point_charts.find(x=>x.id===dc.dataset.deleteChart);if(d)await FileStore.del(d.file_id);db.point_charts=db.point_charts.filter(x=>x.id!==dc.dataset.deleteChart);save();renderAll()}
+  if(dr&&confirm('Delete this point rule?')){db.point_rules=db.point_rules.filter(x=>x.id!==dr.dataset.deleteRule);save();renderAll()}
+});
+$('#importFile').onchange=e=>setImportFiles(e.target.files,true);
+$('#dropZone').ondragover=e=>e.preventDefault();
+$('#dropZone').ondrop=e=>{e.preventDefault();setImportFiles(e.dataTransfer.files,true)};
+$('#dropZone').addEventListener('paste',e=>{
+  let fs=[...(e.clipboardData?.files||[])];
+  if(!fs.length&&e.clipboardData?.items){
+    fs=[...e.clipboardData.items].filter(it=>it.kind==='file').map(it=>it.getAsFile()).filter(Boolean);
+  }
+  if(fs.length){
+    e.preventDefault();setImportFiles(fs,true);
+    $('#importStatus').className='status-line ok';$('#importStatus').textContent=`${fs.length} pasted screenshot/file(s) added. Click Analyze / OCR.`;
+    if($('#importType')?.value==='reservations')setTimeout(()=>analyzeReservationFiles(),200);
+  }
+});
+$('#exportBtn').onclick=()=>{let blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='travel_mexico_crm_data.json';a.click();URL.revokeObjectURL(a.href)};
+if($('#fullBackupBtn'))$('#fullBackupBtn').onclick=exportFullBackup;
+if($('#restoreBackupInput'))$('#restoreBackupInput').onchange=async e=>{let f=e.target.files[0];if(!f)return;try{await restoreFullBackup(f)}catch(err){alert('Restore error: '+(err?.message||err))}finally{e.target.value=''}};
+$('#clearData').onclick=async()=>{if(confirm('Clear ALL CRM data and stored reference files from this browser? This cannot be undone unless you have a Full Backup.')){try{await FileStore.clear()}catch(err){console.warn('File storage clear failed',err)}db=Storage.blank();save();masterFilterState={from:'',to:'',client:'',campaign:'',resort:'',level:'',status:''};renderAll();updateSystemHealth()}};
+renderAll();
+})();</script><datalist id="roomTypeOptions"><option value="1BR">1BR</option><option value="1BR ELITE">1BR ELITE</option><option value="2BR">2BR</option><option value="2BR ELITE">2BR ELITE</option><option value="2BR OF">2BR OF</option><option value="2BR PH ELITE">2BR PH ELITE</option><option value="3BR">3BR</option><option value="3BR OF">3BR OF</option><option value="ST">ST</option><option value="ST Elite">ST Elite</option></datalist>
+</body></html>
